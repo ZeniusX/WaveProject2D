@@ -6,6 +6,7 @@ public class GameInput : MonoBehaviour
 {
     public static GameInput Instance { get; private set; }
 
+    public event EventHandler OnReloadPerformed;
     public event EventHandler<OnMouseLeftClickEventArgs> OnMouseLeftClick;
     public class OnMouseLeftClickEventArgs : EventArgs
     {
@@ -32,6 +33,12 @@ public class GameInput : MonoBehaviour
     {
         inputActions.Player.MouseLeftClick.performed += MouseLeftClick_Performed;
         inputActions.Player.MouseLeftClick.canceled += MouseLeftClick_Canceled;
+        inputActions.Player.Reload.performed += Reload_Performed;
+    }
+
+    private void Reload_Performed(InputAction.CallbackContext context)
+    {
+        OnReloadPerformed?.Invoke(this, EventArgs.Empty);
     }
 
     private void MouseLeftClick_Performed(InputAction.CallbackContext context)
