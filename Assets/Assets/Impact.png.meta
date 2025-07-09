@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 2745b7ae01b89ce41b235edaf4cd212c
+guid: 618fff746e782f24bb9441d3dfcadeb8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7585152519634715212
-    second: TerrainTemplate_Tileset_0
-  - first:
-      213: 1651240041976518557
-    second: TerrainTemplate_Tileset_1
-  - first:
-      213: 6789184893945760673
-    second: TerrainTemplate_Tileset_2
-  - first:
-      213: -9073650595611965860
-    second: TerrainTemplate_Tileset_3
-  - first:
-      213: -4031354418154110126
-    second: TerrainTemplate_Tileset_4
+      213: 5838690487585382102
+    second: Impact_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -138,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TerrainTemplate_Tileset_0
+      name: Impact_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 127
-        width: 81
-        height: 17
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,96 +141,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4bd7304a8ff1cb690800000000000000
-      internalID: -7585152519634715212
+      spriteID: 6de9af15012370150800000000000000
+      internalID: 5838690487585382102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TerrainTemplate_Tileset_1
+      name: Impact_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 80
-        width: 46
-        height: 48
+        x: 16
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d9759ecc1126ae610800000000000000
-      internalID: 1651240041976518557
+      spriteID: 662fa32001848c54f8bd39cae02157fe
+      internalID: -1925630181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TerrainTemplate_Tileset_2
+      name: Impact_2
       rect:
         serializedVersion: 2
-        x: 49
-        y: 80
-        width: 46
-        height: 48
+        x: 32
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1abc51eb0b7083e50800000000000000
-      internalID: 6789184893945760673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TerrainTemplate_Tileset_3
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 32
-        width: 46
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5689888bdae31280800000000000000
-      internalID: -9073650595611965860
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TerrainTemplate_Tileset_4
-      rect:
-        serializedVersion: 2
-        x: 47
-        y: 47
-        width: 49
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 25309360480cd08c0800000000000000
-      internalID: -4031354418154110126
+      spriteID: 84e7b18c4497f37448aa5dc8317d6ee6
+      internalID: 524105227
       vertices: []
       indices: 
       edges: []
@@ -251,7 +195,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d5be80b81b0da814a9c531073eda3b65
     internalID: 0
     vertices: []
     indices: 
@@ -260,7 +204,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Impact_0: 5838690487585382102
+      Impact_1: -1925630181
+      Impact_2: 524105227
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

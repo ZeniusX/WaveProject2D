@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 28
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -335,7 +335,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      zombie bigg 2 movement_0: -2103838758618373936
+      zombie bigg 2 movement_1: 4969219033252186827
+      zombie bigg 2 movement_2: 1120144547268919280
+      zombie bigg 2 movement_3: 6717610076799258559
+      zombie bigg 2 movement_4: 6393634797023006920
+      zombie bigg 2 movement_5: -1817440820964612584
+      zombie bigg 2 movement_6: -8186137848351604364
+      zombie bigg 2 movement_7: -2214964135583788094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

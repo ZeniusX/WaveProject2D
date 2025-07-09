@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotateSpeed = 5f;
+
+    [Header("References")]
+    [SerializeField] private Transform firePoint;
 
     private Rigidbody2D playerRb;
 
@@ -28,7 +32,7 @@ public class Player : MonoBehaviour
     private void HandlePlayerRotation()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 lookDir = mousePos - playerRb.position;
+        Vector2 lookDir = mousePos - (Vector2)firePoint.position;
 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
