@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour, IHasProgress
@@ -64,6 +62,15 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
                 bulletTransform.GetComponent<Bullet>().SetBulletSettings(weaponTypeSO.bulletSettings);
             }
 
+            AudioSource.PlayClipAtPoint
+            (
+                weaponTypeSO.weaponSettings.audioClipList[UnityEngine.Random.Range
+                (
+                    0, weaponTypeSO.weaponSettings.audioClipList.Count
+                )],
+                weaponFirePoint.position
+            );
+
             currentAmmoCount--;
             fireCooldown = weaponTypeSO.weaponSettings.fireRate;
 
@@ -95,6 +102,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     private void OnDestroy()
     {
         GameInput.Instance.OnMouseLeftClick -= GameInput_OnMouseLeftClick;
+        GameInput.Instance.OnReloadPerformed -= GameInput_OnReloadPerformed;
     }
 
     public Transform GetWeaponFirePoint()

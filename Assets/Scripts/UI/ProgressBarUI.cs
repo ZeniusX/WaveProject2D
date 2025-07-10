@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +10,16 @@ public class ProgressBarUI : MonoBehaviour
     private GameObject hasProgressGameObject;
     private IHasProgress hasProgress;
 
-    private void Awake()
+    private void Start()
     {
         hasProgressGameObject = Player.Instance.GetCurrentPlayerWeapon().gameObject;
+
+        SubscribeToProgressGameObject();
+        
+        Player.Instance.OnCurrentWeaponChange += Player_OnCurrentWeaponChange;
     }
 
-    private void Start()
+    private void Player_OnCurrentWeaponChange(object sender, EventArgs e)
     {
         SubscribeToProgressGameObject();
     }
@@ -25,7 +30,7 @@ public class ProgressBarUI : MonoBehaviour
         {
             hasProgress.OnProgressChange -= HasProgress_OnProgressChange;
         }
-        
+
         hasProgressGameObject = Player.Instance.GetCurrentPlayerWeapon().gameObject;
 
         if (!hasProgressGameObject.TryGetComponent(out hasProgress))

@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: SMG
   m_EditorClassIdentifier: 
   weaponSettings:
-    fireRate: 0.2
+    fireRate: 0.15
     reloadTime: 2.5
     ammoCount: 30
     bulletsPerShot: 1
+    audioClipList:
+    - {fileID: 8300000, guid: c432086aa18935c478bae199546652a2, type: 3}
   bulletSettings:
     bulletSpeedMin: 25
     bulletSpeedMax: 30

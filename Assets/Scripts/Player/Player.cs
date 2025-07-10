@@ -1,9 +1,13 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
+
+    public event EventHandler OnCurrentWeaponChange;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -53,5 +57,19 @@ public class Player : MonoBehaviour
     public Transform GetCurrentPlayerWeapon()
     {
         return CurrentPlayerWeapon;
+    }
+
+    public void SetCurrentPlayerWeapon(Transform newWeapon)
+    {
+        Transform playerWeapon = CurrentPlayerWeapon;
+
+        Transform newWeaponTransform = Instantiate(newWeapon, transform);
+        
+        CurrentPlayerWeapon = newWeaponTransform;
+        firePoint = newWeaponTransform.GetComponent<PlayerWeapon>().GetWeaponFirePoint();
+
+        Destroy(playerWeapon.gameObject);
+
+        OnCurrentWeaponChange?.Invoke(this, EventArgs.Empty);
     }
 }
