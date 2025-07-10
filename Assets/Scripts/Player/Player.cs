@@ -1,19 +1,30 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotateSpeed = 5f;
 
     [Header("References")]
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform CurrentPlayerWeapon;
 
+    private Transform firePoint;
     private Rigidbody2D playerRb;
 
     private void Awake()
     {
+        Instance = this;
+
         playerRb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        firePoint = CurrentPlayerWeapon.gameObject.GetComponent<PlayerWeapon>().GetWeaponFirePoint();
     }
 
     private void FixedUpdate()
@@ -37,5 +48,10 @@ public class Player : MonoBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
         playerRb.MoveRotation(Mathf.LerpAngle(playerRb.rotation, angle, Time.fixedDeltaTime * rotateSpeed));
+    }
+
+    public Transform GetCurrentPlayerWeapon()
+    {
+        return CurrentPlayerWeapon;
     }
 }

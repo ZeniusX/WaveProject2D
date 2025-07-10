@@ -2,12 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [Header("Bullet Settings")]
-    [SerializeField] private float bulletSpeedMin = 5f;
-    [SerializeField] private float bulletSpeedMax = 5f;
-    [SerializeField] private float bulletLifeTimeMin = 3f;
-    [SerializeField] private float bulletLifeTimeMax = 3.1f;
-    [SerializeField] private float spreadAngle = 5f;
+    [SerializeField] private BulletSettings bulletSettings;
 
     [Header("References")]
     [SerializeField] private Transform impactPrefab;
@@ -28,10 +23,10 @@ public class Bullet : MonoBehaviour
 
     private void FireBullet()
     {
-        bulletSpeed = Random.Range(bulletSpeedMin, bulletSpeedMax);
-        bulletLifeTime = Random.Range(bulletLifeTimeMin, bulletLifeTimeMax);
+        bulletSpeed = Random.Range(bulletSettings.bulletSpeedMin, bulletSettings.bulletSpeedMax);
+        bulletLifeTime = Random.Range(bulletSettings.bulletLifeTimeMin, bulletSettings.bulletLifeTimeMax);
 
-        float randomAngle = Random.Range(-spreadAngle, spreadAngle);
+        float randomAngle = Random.Range(-bulletSettings.spreadAngle, bulletSettings.spreadAngle);
         transform.rotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + randomAngle);
 
         bulletRb.AddForce(transform.up * bulletSpeed, ForceMode2D.Impulse);
@@ -56,5 +51,10 @@ public class Bullet : MonoBehaviour
     {
         Destroy(Instantiate(impactPrefab, transform.position, Quaternion.identity).gameObject, 1f);
         Destroy(gameObject);
+    }
+
+    public void SetBulletSettings(BulletSettings bulletSettings)
+    {
+        this.bulletSettings = bulletSettings;
     }
 }

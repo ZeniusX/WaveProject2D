@@ -10,15 +10,12 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     public event EventHandler OnWeaponShoot;
     public event EventHandler<IHasProgress.OnProgressChangeEventArgs> OnProgressChange;
 
-    [Header("Weapon Settings")]
-    [SerializeField] private float fireRate = 0.2f;
-    [SerializeField] private float reloadTime = 3f;
-    [SerializeField] private int ammoCount = 30;
-    [SerializeField] private int bulletsPerShot = 1;
+    [Header("Scriptable Objects")]
+    public WeaponTypeSO weaponTypeSO;
 
     [Header("References")]
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private Transform bulletPrefab;
+    [SerializeField] private Transform weaponFirePoint;
+    [SerializeField] private Transform weaponBulletPrefab;
 
     private float fireCooldown;
     private float reloadTimer;
@@ -31,7 +28,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         GameInput.Instance.OnMouseLeftClick += GameInput_OnMouseLeftClick;
         GameInput.Instance.OnReloadPerformed += GameInput_OnReloadPerformed;
 
-        currentAmmoCount = ammoCount;
+        currentAmmoCount = weaponTypeSO.weaponSettings.ammoCount;
     }
 
     private void GameInput_OnReloadPerformed(object sender, EventArgs e)
@@ -61,13 +58,14 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     {
         if (fireCooldown <= 0f && currentAmmoCount > 0 && !isReloading)
         {
-            for (int i = 0; i < bulletsPerShot; i++)
+            for (int i = 0; i < weaponTypeSO.weaponSettings.bulletsPerShot; i++)
             {
-                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Transform bulletTransform = Instantiate(weaponBulletPrefab, weaponFirePoint.position, weaponFirePoint.rotation);
+                bulletTransform.GetComponent<Bullet>().SetBulletSettings(weaponTypeSO.bulletSettings);
             }
 
             currentAmmoCount--;
-            fireCooldown = fireRate;
+            fireCooldown = weaponTypeSO.weaponSettings.fireRate;
 
             OnWeaponShoot?.Invoke(this, EventArgs.Empty);
         }
@@ -77,19 +75,19 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     {
         isReloading = true;
 
-        reloadTimer = reloadTime;
+        reloadTimer = weaponTypeSO.weaponSettings.reloadTime;
         while (reloadTimer > 0f)
         {
             reloadTimer -= Time.deltaTime;
             OnProgressChange?.Invoke(this, new IHasProgress.OnProgressChangeEventArgs
             {
-                progressNormalized = 1f - (reloadTimer / reloadTime)
+                progressNormalized = 1f - (reloadTimer / weaponTypeSO.weaponSettings.reloadTime)
             });
             yield return null;
         }
         reloadTimer = 0f;
 
-        currentAmmoCount = ammoCount;
+        currentAmmoCount = weaponTypeSO.weaponSettings.ammoCount;
 
         isReloading = false;
     }
@@ -97,5 +95,10 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     private void OnDestroy()
     {
         GameInput.Instance.OnMouseLeftClick -= GameInput_OnMouseLeftClick;
+    }
+
+    public Transform GetWeaponFirePoint()
+    {
+        return weaponFirePoint;
     }
 }
