@@ -6,6 +6,11 @@ public class GameInput : MonoBehaviour
 {
     public static GameInput Instance { get; private set; }
 
+    public event EventHandler OnHotbar_1_Performed;
+    public event EventHandler OnHotbar_2_Performed;
+    public event EventHandler OnHotbar_3_Performed;
+    public event EventHandler OnHotbar_4_Performed;
+
     public event EventHandler OnReloadPerformed;
     public event EventHandler<OnMouseLeftClickEventArgs> OnMouseLeftClick;
     public class OnMouseLeftClickEventArgs : EventArgs
@@ -34,6 +39,31 @@ public class GameInput : MonoBehaviour
         inputActions.Player.MouseLeftClick.performed += MouseLeftClick_Performed;
         inputActions.Player.MouseLeftClick.canceled += MouseLeftClick_Canceled;
         inputActions.Player.Reload.performed += Reload_Performed;
+
+        inputActions.UI.Hotbar_1.performed += Hotbar_1_Performed;
+        inputActions.UI.Hotbar_2.performed += Hotbar_2_Performed;
+        inputActions.UI.Hotbar_3.performed += Hotbar_3_Performed;
+        inputActions.UI.Hotbar_4.performed += Hotbar_4_Performed;
+    }
+
+    private void Hotbar_1_Performed(InputAction.CallbackContext context)
+    {
+        OnHotbar_1_Performed?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Hotbar_2_Performed(InputAction.CallbackContext context)
+    {
+        OnHotbar_2_Performed?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Hotbar_3_Performed(InputAction.CallbackContext context)
+    {
+        OnHotbar_3_Performed?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Hotbar_4_Performed(InputAction.CallbackContext context)
+    {
+        OnHotbar_4_Performed?.Invoke(this, EventArgs.Empty);
     }
 
     private void Reload_Performed(InputAction.CallbackContext context)
@@ -63,12 +93,12 @@ public class GameInput : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Player.Enable();
+        inputActions.Enable();
     }
 
     private void OnDisable()
     {
-        inputActions.Player.Disable();
+        inputActions.Disable();
     }
 
     private void OnDestroy()

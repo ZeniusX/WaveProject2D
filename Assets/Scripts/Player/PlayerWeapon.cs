@@ -9,7 +9,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     public event EventHandler<IHasProgress.OnProgressChangeEventArgs> OnProgressChange;
 
     [Header("Scriptable Objects")]
-    public WeaponTypeSO weaponTypeSO;
+    [SerializeField] private WeaponTypeSO weaponTypeSO;
 
     [Header("References")]
     [SerializeField] private Transform weaponFirePoint;
@@ -109,5 +109,10 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     public Transform GetWeaponFirePoint()
     {
         return weaponFirePoint;
+    }
+
+    public WeaponTypeSO GetWeaponTypeSO()
+    {
+        return weaponTypeSO;
     }
 }

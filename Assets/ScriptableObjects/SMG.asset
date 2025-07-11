@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173bc8800858fac45972add59b420dbd, type: 3}
   m_Name: SMG
   m_EditorClassIdentifier: 
+  weaponName: SMG
+  weaponGameObject: {fileID: 4993600469394424786, guid: 7ba335bd9795bc64b9efc0be084f8acb, type: 3}
   weaponSettings:
     fireRate: 0.15
     reloadTime: 2.5

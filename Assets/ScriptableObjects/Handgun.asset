@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173bc8800858fac45972add59b420dbd, type: 3}
   m_Name: Handgun
   m_EditorClassIdentifier: 
+  weaponName: Handgun
+  weaponGameObject: {fileID: 4993600469394424786, guid: 9b288922dd0c4ac458037df9d03d58cd, type: 3}
   weaponSettings:
     fireRate: 0.35
     reloadTime: 1

@@ -59,12 +59,17 @@ public class Player : MonoBehaviour
         return CurrentPlayerWeapon;
     }
 
-    public void SetCurrentPlayerWeapon(Transform newWeapon)
+    public WeaponTypeSO GetCurrentPlayerWeaponTypeSO()
+    {
+        return GetCurrentPlayerWeapon().GetComponent<PlayerWeapon>().GetWeaponTypeSO();
+    }
+
+    public void SetCurrentPlayerWeapon(WeaponTypeSO weaponTypeSO)
     {
         Transform playerWeapon = CurrentPlayerWeapon;
 
-        Transform newWeaponTransform = Instantiate(newWeapon, transform);
-        
+        Transform newWeaponTransform = Instantiate(weaponTypeSO.weaponGameObject.transform, transform);
+
         CurrentPlayerWeapon = newWeaponTransform;
         firePoint = newWeaponTransform.GetComponent<PlayerWeapon>().GetWeaponFirePoint();
 

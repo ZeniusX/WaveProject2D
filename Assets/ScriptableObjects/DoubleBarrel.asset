@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173bc8800858fac45972add59b420dbd, type: 3}
   m_Name: DoubleBarrel
   m_EditorClassIdentifier: 
+  weaponName: Double Barrel
+  weaponGameObject: {fileID: 4993600469394424786, guid: ac8d417ee0a98644f8736d38f917dda1, type: 3}
   weaponSettings:
     fireRate: 0.65
     reloadTime: 3.5
