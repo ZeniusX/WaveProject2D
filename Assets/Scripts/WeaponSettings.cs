@@ -11,5 +11,6 @@ public struct WeaponSettings
     public int bulletsPerShot;
 
     [Space]
+    public float audioVolume;
     public List<AudioClip> audioClipList;
 }

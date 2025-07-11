@@ -17,11 +17,12 @@ MonoBehaviour:
     reloadTime: 5
     ammoCount: 10
     bulletsPerShot: 1
+    audioVolume: 0.7
     audioClipList:
-    - {fileID: 8300000, guid: c432086aa18935c478bae199546652a2, type: 3}
+    - {fileID: 8300000, guid: 3e99c8a4f01281b40ac6ae32b20d4b9f, type: 3}
   bulletSettings:
     bulletSpeedMin: 25
     bulletSpeedMax: 30
-    bulletLifeTimeMin: 0.3
-    bulletLifeTimeMax: 0.35
+    bulletLifeTimeMin: 0.45
+    bulletLifeTimeMax: 0.5
     spreadAngle: 3

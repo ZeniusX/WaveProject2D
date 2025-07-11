@@ -7,8 +7,8 @@ public class Bullet : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform impactPrefab;
 
-    private float bulletSpeed;
-    private float bulletLifeTime;
+    private float randomBulletSpeed;
+    private float randomBulletLifeTime;
     private Rigidbody2D bulletRb;
 
     private void Awake()
@@ -23,13 +23,13 @@ public class Bullet : MonoBehaviour
 
     private void FireBullet()
     {
-        bulletSpeed = Random.Range(bulletSettings.bulletSpeedMin, bulletSettings.bulletSpeedMax);
-        bulletLifeTime = Random.Range(bulletSettings.bulletLifeTimeMin, bulletSettings.bulletLifeTimeMax);
+        randomBulletSpeed = Random.Range(bulletSettings.bulletSpeedMin, bulletSettings.bulletSpeedMax);
+        randomBulletLifeTime = Random.Range(bulletSettings.bulletLifeTimeMin, bulletSettings.bulletLifeTimeMax);
 
         float randomAngle = Random.Range(-bulletSettings.spreadAngle, bulletSettings.spreadAngle);
         transform.rotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + randomAngle);
 
-        bulletRb.AddForce(transform.up * bulletSpeed, ForceMode2D.Impulse);
+        bulletRb.AddForce(transform.up * randomBulletSpeed, ForceMode2D.Impulse);
     }
 
     private void Update()
@@ -39,9 +39,9 @@ public class Bullet : MonoBehaviour
 
     private void HandleLifeTime()
     {
-        bulletLifeTime -= Time.deltaTime;
+        randomBulletLifeTime -= Time.deltaTime;
 
-        if (bulletLifeTime <= 0f)
+        if (randomBulletLifeTime <= 0f)
         {
             DestroyObject();
         }

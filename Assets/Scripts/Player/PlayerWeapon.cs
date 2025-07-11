@@ -68,7 +68,8 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
                 (
                     0, weaponTypeSO.weaponSettings.audioClipList.Count
                 )],
-                weaponFirePoint.position
+                weaponFirePoint.position,
+                weaponTypeSO.weaponSettings.audioVolume
             );
 
             currentAmmoCount--;
