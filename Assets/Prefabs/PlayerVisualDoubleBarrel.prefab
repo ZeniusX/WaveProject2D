@@ -50,6 +50,7 @@ MonoBehaviour:
   weaponTypeSO: {fileID: 11400000, guid: ca3a754e4b95adf4ca26dd3f2d312130, type: 2}
   weaponFirePoint: {fileID: 1094427949430651751}
   weaponBulletPrefab: {fileID: 8921058763809183982, guid: bd131dae7c21b824bb12613fddb691b0, type: 3}
+  weaponType: 1
 --- !u!212 &6711896894767796282
 SpriteRenderer:
   m_ObjectHideFlags: 0
