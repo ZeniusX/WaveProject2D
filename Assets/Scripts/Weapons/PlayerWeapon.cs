@@ -64,10 +64,13 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
             AudioSource.PlayClipAtPoint
             (
-                weaponTypeSO.weaponSettings.audioClipList[UnityEngine.Random.Range
-                (
-                    0, weaponTypeSO.weaponSettings.audioClipList.Count
-                )],
+                weaponTypeSO.weaponSettings.audioClipList
+                [
+                    UnityEngine.Random.Range
+                    (
+                        0, weaponTypeSO.weaponSettings.audioClipList.Count
+                    )
+                ],
                 weaponFirePoint.position,
                 weaponTypeSO.weaponSettings.audioVolume
             );
