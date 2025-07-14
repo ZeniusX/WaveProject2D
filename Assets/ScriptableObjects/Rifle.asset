@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Rifle
   weaponGameObject: {fileID: 4993600469394424786, guid: 3e608b604be1d6e4685ba8c96ad17935, type: 3}
-  weaponType: 2
   weaponSettings:
     fireRate: 0.45
     reloadTime: 5
     ammoCount: 10
+    currentAmmoCount: 10
     bulletsPerShot: 1
     audioVolume: 0.7
     audioClipList:

@@ -18,6 +18,7 @@ MonoBehaviour:
     fireRate: 0.35
     reloadTime: 1
     ammoCount: 12
+    currentAmmoCount: 12
     bulletsPerShot: 1
     audioVolume: 1
     audioClipList:

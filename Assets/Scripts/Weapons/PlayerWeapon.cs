@@ -17,16 +17,28 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
     private float fireCooldown;
     private float reloadTimer;
-    private int currentAmmoCount;
     private bool isShooting;
     private bool isReloading;
+
+    private WeaponManager.WeaponData weaponData;
 
     private void Start()
     {
         GameInput.Instance.OnMouseLeftClick += GameInput_OnMouseLeftClick;
         GameInput.Instance.OnReloadPerformed += GameInput_OnReloadPerformed;
 
-        currentAmmoCount = weaponTypeSO.weaponSettings.ammoCount;
+        if (WeaponManager.Instance.HasWeaponData(weaponTypeSO.weaponType))
+        {
+            weaponData = WeaponManager.Instance.GetWeaponData(weaponTypeSO.weaponType);
+        }
+        else
+        {
+            WeaponManager.Instance.AddWeaponData(weaponTypeSO.weaponType, new WeaponManager.WeaponData
+            {
+                currentAmmoCount = weaponTypeSO.weaponSettings.ammoCount
+            });
+            weaponData = WeaponManager.Instance.GetWeaponData(weaponTypeSO.weaponType);
+        }
     }
 
     private void GameInput_OnReloadPerformed(object sender, EventArgs e)
@@ -54,7 +66,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
     private void Shoot()
     {
-        if (fireCooldown <= 0f && currentAmmoCount > 0 && !isReloading)
+        if (fireCooldown <= 0f && weaponData.currentAmmoCount > 0 && !isReloading)
         {
             for (int i = 0; i < weaponTypeSO.weaponSettings.bulletsPerShot; i++)
             {
@@ -75,7 +87,10 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
                 weaponTypeSO.weaponSettings.audioVolume
             );
 
-            currentAmmoCount--;
+            weaponData.currentAmmoCount--;
+
+            WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
+
             fireCooldown = weaponTypeSO.weaponSettings.fireRate;
 
             OnWeaponShoot?.Invoke(this, EventArgs.Empty);
@@ -98,7 +113,9 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         }
         reloadTimer = 0f;
 
-        currentAmmoCount = weaponTypeSO.weaponSettings.ammoCount;
+        weaponData.currentAmmoCount = weaponTypeSO.weaponSettings.ammoCount;
+
+        WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
 
         isReloading = false;
     }

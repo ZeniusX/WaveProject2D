@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class WeaponItemButtonSingleUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI weaponName;
+    [SerializeField] private TextMeshProUGUI weaponAmmoCount;
     [SerializeField] private Transform selected;
     [SerializeField] private WeaponTypeSO weaponType;
 
@@ -16,8 +17,6 @@ public class WeaponItemButtonSingleUI : MonoBehaviour
     {
         itemButton = GetComponent<Button>();
 
-        Player.Instance.OnCurrentWeaponChange += Player_OnCurrentWeaponChange;
-
         itemButton.onClick.AddListener(() =>
         {
             SetPlayerWeapon();
@@ -26,9 +25,31 @@ public class WeaponItemButtonSingleUI : MonoBehaviour
 
     private void Start()
     {
+        Player.Instance.OnCurrentWeaponChange += Player_OnCurrentWeaponChange;
+
+        WeaponManager.Instance.OnWeaponDataDictionaryChange += WeaponManager_OnWeaponDataDictionaryChange;
+
         weaponName.text = weaponType.weaponName;
 
         SetSelected();
+        SetAmmoCount(weaponType.weaponSettings.ammoCount, weaponType.weaponSettings.ammoCount);
+    }
+
+    private void WeaponManager_OnWeaponDataDictionaryChange(object sender, EventArgs e)
+    {
+        if (WeaponManager.Instance.HasWeaponData(weaponType.weaponType))
+        {
+            SetAmmoCount
+            (
+                WeaponManager.Instance.GetWeaponData(weaponType.weaponType).currentAmmoCount,
+                weaponType.weaponSettings.ammoCount
+            );
+        }
+    }
+
+    private void SetAmmoCount(int currentAmmo, int maxAmmo)
+    {
+        weaponAmmoCount.text = $"{currentAmmo}/{maxAmmo}";
     }
 
     private void Player_OnCurrentWeaponChange(object sender, EventArgs e)

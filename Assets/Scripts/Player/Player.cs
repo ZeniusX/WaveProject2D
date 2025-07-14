@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float rotateSpeed = 5f;
 
     [Header("References")]
-    [SerializeField] private Transform CurrentPlayerWeapon;
+    [SerializeField] private Transform currentPlayerWeapon;
 
     private Transform firePoint;
     private Rigidbody2D playerRb;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        firePoint = CurrentPlayerWeapon.gameObject.GetComponent<PlayerWeapon>().GetWeaponFirePoint();
+        firePoint = currentPlayerWeapon.gameObject.GetComponent<PlayerWeapon>().GetWeaponFirePoint();
     }
 
     private void FixedUpdate()
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 
     public Transform GetCurrentPlayerWeapon()
     {
-        return CurrentPlayerWeapon;
+        return currentPlayerWeapon;
     }
 
     public WeaponTypeSO GetCurrentPlayerWeaponTypeSO()
@@ -66,11 +66,11 @@ public class Player : MonoBehaviour
 
     public void SetCurrentPlayerWeapon(WeaponTypeSO weaponTypeSO)
     {
-        Transform playerWeapon = CurrentPlayerWeapon;
+        Transform playerWeapon = currentPlayerWeapon;
 
         Transform newWeaponTransform = Instantiate(weaponTypeSO.weaponGameObject.transform, transform);
 
-        CurrentPlayerWeapon = newWeaponTransform;
+        currentPlayerWeapon = newWeaponTransform;
         firePoint = newWeaponTransform.GetComponent<PlayerWeapon>().GetWeaponFirePoint();
 
         Destroy(playerWeapon.gameObject);

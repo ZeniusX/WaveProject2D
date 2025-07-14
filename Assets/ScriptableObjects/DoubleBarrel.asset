@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Double Barrel
   weaponGameObject: {fileID: 4993600469394424786, guid: ac8d417ee0a98644f8736d38f917dda1, type: 3}
-  weaponType: 1
   weaponSettings:
     fireRate: 0.65
     reloadTime: 3.5
     ammoCount: 2
+    currentAmmoCount: 2
     bulletsPerShot: 7
     audioVolume: 1
     audioClipList:

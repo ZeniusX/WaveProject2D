@@ -5,6 +5,7 @@ public class WeaponTypeSO : ScriptableObject
 {
     public string weaponName;
     public GameObject weaponGameObject;
+    public WeaponManager.WeaponType weaponType;
 
     [Space]
     public WeaponSettings weaponSettings;
