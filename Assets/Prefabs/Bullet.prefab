@@ -47,11 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd59d0a94471ee4b86cc079b6bd5c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeedMin: 25
-  bulletSpeedMax: 30
-  bulletLifeTimeMin: 0.3
-  bulletLifeTimeMax: 0.35
-  spreadAngle: 10
+  bulletSettings:
+    bulletSpeedMin: 0
+    bulletSpeedMax: 0
+    bulletLifeTimeMin: 0
+    bulletLifeTimeMax: 0
+    spreadAngle: 0
   impactPrefab: {fileID: 2484953697598050164, guid: 6bb807f3fb1bd9e41b5736ed0edaa501, type: 3}
 --- !u!61 &5576818453644254140
 BoxCollider2D:
@@ -83,7 +84,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -201,7 +202,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 2208703988740019828, guid: 99eba224cd920f947aeb58bf83a2865c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

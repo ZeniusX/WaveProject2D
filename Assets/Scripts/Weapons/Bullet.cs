@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     private float randomBulletSpeed;
     private float randomBulletLifeTime;
     private Rigidbody2D bulletRb;
+    private LayerMask hitMask;
 
     private void Awake()
     {
@@ -56,5 +57,18 @@ public class Bullet : MonoBehaviour
     public void SetBulletSettings(BulletSettings bulletSettings)
     {
         this.bulletSettings = bulletSettings;
+    }
+
+    public void SetHitMask(LayerMask hitMask)
+    {
+        this.hitMask = hitMask;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (((1 << other.gameObject.layer) & hitMask) != 0)
+        {
+            DestroyObject();
+        }
     }
 }

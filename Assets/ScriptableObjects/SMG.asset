@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: SMG
   weaponGameObject: {fileID: 4993600469394424786, guid: 7ba335bd9795bc64b9efc0be084f8acb, type: 3}
+  weaponType: 3
   weaponSettings:
     fireRate: 0.15
     reloadTime: 2.5
     ammoCount: 30
-    currentAmmoCount: 30
     bulletsPerShot: 1
     audioVolume: 0.5
     audioClipList:

@@ -71,7 +71,9 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
             for (int i = 0; i < weaponTypeSO.weaponSettings.bulletsPerShot; i++)
             {
                 Transform bulletTransform = Instantiate(weaponBulletPrefab, weaponFirePoint.position, weaponFirePoint.rotation);
-                bulletTransform.GetComponent<Bullet>().SetBulletSettings(weaponTypeSO.bulletSettings);
+                Bullet bullet = bulletTransform.GetComponent<Bullet>();
+                bullet.SetBulletSettings(weaponTypeSO.bulletSettings);
+                bullet.SetHitMask(Player.Instance.GetTargetMask());
             }
 
             AudioSource.PlayClipAtPoint

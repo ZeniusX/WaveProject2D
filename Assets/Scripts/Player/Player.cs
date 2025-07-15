@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform currentPlayerWeapon;
 
+    [Space]
+    [SerializeField] private LayerMask targetMask;
+
     private Transform firePoint;
     private Rigidbody2D playerRb;
 
@@ -76,5 +79,10 @@ public class Player : MonoBehaviour
         Destroy(playerWeapon.gameObject);
 
         OnCurrentWeaponChange?.Invoke(this, EventArgs.Empty);
+    }
+
+    public LayerMask GetTargetMask()
+    {
+        return targetMask;
     }
 }
