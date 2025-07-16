@@ -17,7 +17,7 @@ MonoBehaviour:
   weaponType: 2
   weaponSettings:
     fireRate: 0.45
-    reloadTime: 5
+    reloadTime: 1.5
     ammoCount: 10
     bulletsPerShot: 1
     audioVolume: 0.7
@@ -29,3 +29,5 @@ MonoBehaviour:
     bulletLifeTimeMin: 0.45
     bulletLifeTimeMax: 0.5
     spreadAngle: 3
+    knockBackPower: 10
+    bulletDamage: 10

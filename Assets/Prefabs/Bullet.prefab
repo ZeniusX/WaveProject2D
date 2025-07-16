@@ -47,12 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd59d0a94471ee4b86cc079b6bd5c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSettings:
-    bulletSpeedMin: 0
-    bulletSpeedMax: 0
-    bulletLifeTimeMin: 0
-    bulletLifeTimeMax: 0
-    spreadAngle: 0
   bulletImpactPrefab: {fileID: 2484953697598050164, guid: 6bb807f3fb1bd9e41b5736ed0edaa501, type: 3}
   bloodImpactPrefab: {fileID: 7284120211068914427, guid: ca9756cb541a63843a32ae2868953163, type: 3}
 --- !u!61 &5576818453644254140
@@ -126,7 +120,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &4813197030421403692
 GameObject:

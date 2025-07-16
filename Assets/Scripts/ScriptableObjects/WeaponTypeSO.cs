@@ -9,5 +9,7 @@ public class WeaponTypeSO : ScriptableObject
 
     [Space]
     public WeaponSettings weaponSettings;
+
+    [Space]
     public BulletSettings bulletSettings;
 }

@@ -69,7 +69,19 @@ public class Bullet : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & hitMask) != 0)
         {
-            DestroyObject(bloodImpactPrefab);
+            if (other.TryGetComponent(out IDamageable component))
+            {
+                component.TakeDamage
+                (
+                    new DamageProfile
+                    {
+                        damageTaken = bulletSettings.bulletDamage,
+                        knockBackPower = bulletSettings.knockBackPower,
+                    }
+                );
+
+                DestroyObject(bloodImpactPrefab);
+            }
         }
     }
 }

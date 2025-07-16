@@ -35,7 +35,8 @@ public class Enemy : MonoBehaviour
         {
             Vector2 moveDir = target.transform.position - transform.position;
 
-            enemyRb.MovePosition(enemyRb.position + moveSpeed * Time.fixedDeltaTime * moveDir.normalized);
+            // enemyRb.MovePosition(enemyRb.position + moveSpeed * Time.fixedDeltaTime * moveDir.normalized);
+            enemyRb.linearVelocity += moveSpeed * Time.fixedDeltaTime * moveDir.normalized;
         }
         else
         {

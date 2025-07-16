@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Handgun
   weaponGameObject: {fileID: 4993600469394424786, guid: 9b288922dd0c4ac458037df9d03d58cd, type: 3}
+  weaponType: 0
   weaponSettings:
     fireRate: 0.35
-    reloadTime: 1
+    reloadTime: 0.5
     ammoCount: 12
-    currentAmmoCount: 12
     bulletsPerShot: 1
     audioVolume: 1
     audioClipList:
@@ -29,3 +29,5 @@ MonoBehaviour:
     bulletLifeTimeMin: 0.3
     bulletLifeTimeMax: 0.35
     spreadAngle: 5
+    knockBackPower: 2
+    bulletDamage: 5
