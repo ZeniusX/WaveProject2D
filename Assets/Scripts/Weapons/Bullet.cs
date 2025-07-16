@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private BulletSettings bulletSettings;
-
     [Header("References")]
-    [SerializeField] private Transform impactPrefab;
+    [SerializeField] private Transform bulletImpactPrefab;
+    [SerializeField] private Transform bloodImpactPrefab;
+
+    private BulletSettings bulletSettings;
 
     private float randomBulletSpeed;
     private float randomBulletLifeTime;
@@ -44,11 +45,11 @@ public class Bullet : MonoBehaviour
 
         if (randomBulletLifeTime <= 0f)
         {
-            DestroyObject();
+            DestroyObject(bulletImpactPrefab);
         }
     }
 
-    private void DestroyObject()
+    private void DestroyObject(Transform impactPrefab)
     {
         Destroy(Instantiate(impactPrefab, transform.position, Quaternion.identity).gameObject, 1f);
         Destroy(gameObject);
@@ -68,7 +69,7 @@ public class Bullet : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & hitMask) != 0)
         {
-            DestroyObject();
+            DestroyObject(bloodImpactPrefab);
         }
     }
 }

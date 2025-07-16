@@ -31,8 +31,6 @@ public class Enemy : MonoBehaviour
 
     private void HandleEnemyMovement()
     {
-        Vector2 currentPosition = enemyRb.position;
-
         if (!CloseToTarget())
         {
             Vector2 moveDir = target.transform.position - transform.position;
@@ -41,7 +39,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            enemyRb.MovePosition(currentPosition);
+            enemyRb.linearVelocity = Vector2.zero;
         }
     }
 
