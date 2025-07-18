@@ -21,13 +21,24 @@ public class WeaponManager : MonoBehaviour
         SMG,
     }
 
+    [SerializeField] private Transform bulletPrefab;
+    [SerializeField] private int bulletSize = 50;
+
+    private ObjectPool<Transform> objectPool;
     private Dictionary<WeaponType, WeaponData> weaponDataDictionary;
 
     private void Awake()
     {
         Instance = this;
 
+        objectPool = new ObjectPool<Transform>(bulletPrefab, bulletSize, this.transform);
+
         weaponDataDictionary = new Dictionary<WeaponType, WeaponData>();
+    }
+
+    public Transform GetAvailableBullet()
+    {
+        return objectPool.Get();
     }
 
     public void AddWeaponData(WeaponType weaponType, WeaponData weaponData)

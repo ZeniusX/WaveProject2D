@@ -13,7 +13,6 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
     [Header("References")]
     [SerializeField] private Transform weaponFirePoint;
-    [SerializeField] private Transform weaponBulletPrefab;
 
     private float fireCooldown;
     private float reloadTimer;
@@ -70,10 +69,12 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         {
             for (int i = 0; i < weaponTypeSO.weaponSettings.bulletsPerShot; i++)
             {
-                Transform bulletTransform = Instantiate(weaponBulletPrefab, weaponFirePoint.position, weaponFirePoint.rotation);
+                Transform bulletTransform = WeaponManager.Instance.GetAvailableBullet();
+
+                bulletTransform.SetPositionAndRotation(weaponFirePoint.position, weaponFirePoint.rotation);
+
                 Bullet bullet = bulletTransform.GetComponent<Bullet>();
-                bullet.SetBulletSettings(weaponTypeSO.bulletSettings);
-                bullet.SetHitMask(Player.Instance.GetTargetMask());
+                bullet.FireBullet(weaponTypeSO.bulletSettings, Player.Instance.GetTargetMask());
             }
 
             AudioSource.PlayClipAtPoint

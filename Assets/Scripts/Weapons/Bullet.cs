@@ -18,13 +18,11 @@ public class Bullet : MonoBehaviour
         bulletRb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    public void FireBullet(BulletSettings bulletSettings, LayerMask layerMask)
     {
-        FireBullet();
-    }
+        SetBulletSettings(bulletSettings);
+        SetHitMask(layerMask);
 
-    private void FireBullet()
-    {
         randomBulletSpeed = Random.Range(bulletSettings.bulletSpeedMin, bulletSettings.bulletSpeedMax);
         randomBulletLifeTime = Random.Range(bulletSettings.bulletLifeTimeMin, bulletSettings.bulletLifeTimeMax);
 
@@ -45,14 +43,14 @@ public class Bullet : MonoBehaviour
 
         if (randomBulletLifeTime <= 0f)
         {
-            DestroyObject(bulletImpactPrefab);
+            HideObject(bulletImpactPrefab);
         }
     }
 
-    private void DestroyObject(Transform impactPrefab)
+    private void HideObject(Transform impactPrefab)
     {
         Destroy(Instantiate(impactPrefab, transform.position, Quaternion.identity).gameObject, 1f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void SetBulletSettings(BulletSettings bulletSettings)
@@ -80,7 +78,7 @@ public class Bullet : MonoBehaviour
                     }
                 );
 
-                DestroyObject(bloodImpactPrefab);
+                HideObject(bloodImpactPrefab);
             }
         }
     }
