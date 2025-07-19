@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4035548666082257454}
   - component: {fileID: 5216311847378252081}
+  - component: {fileID: 4706102379909498437}
   - component: {fileID: 6711896894767796282}
   m_Layer: 0
   m_Name: PlayerVisualSMG
@@ -49,8 +50,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponTypeSO: {fileID: 11400000, guid: 79afe9892204ee2458c9167a60117a8b, type: 2}
   weaponFirePoint: {fileID: 1094427949430651751}
-  weaponBulletPrefab: {fileID: 8921058763809183982, guid: bd131dae7c21b824bb12613fddb691b0, type: 3}
-  weaponType: 3
+--- !u!114 &4706102379909498437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993600469394424786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3f1dd118f4e054a9760bb53d81017a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!212 &6711896894767796282
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8375517420646919494}
+  - component: {fileID: 7214500752634135952}
   - component: {fileID: 1303063349849941442}
   m_Layer: 0
   m_Name: EnemyVisual
@@ -25,13 +26,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832134790176378090}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4605049192950025794}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &7214500752634135952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832134790176378090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e10bcbe08e6d914c9fd864e156c8c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageable: {fileID: 257723454426013299}
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!212 &1303063349849941442
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76,7 +91,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5782521184205631276, guid: 64c4ed77e633fd146a49d4d8c3373d5b, type: 3}
+  m_Sprite: {fileID: -2103838758618373936, guid: 73e67d34fd1190f4d94d8a4579babbe9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +116,7 @@ GameObject:
   - component: {fileID: 3446700662033431681}
   - component: {fileID: 65084601038554800}
   m_Layer: 7
-  m_Name: EnemyZombie
+  m_Name: EnemyZombie_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8670241e9f67a4a898d9a3f76e8979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 50
 --- !u!50 &3446700662033431681
 Rigidbody2D:
   serializedVersion: 5

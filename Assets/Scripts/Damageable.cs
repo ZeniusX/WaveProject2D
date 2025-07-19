@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour, IDamageable
 {
+    public event EventHandler OnDamageTaken;
+
     [SerializeField] private int maxHealth = 10;
 
     private int currentHealth;
@@ -25,6 +28,8 @@ public class Damageable : MonoBehaviour, IDamageable
         {
             Die();
         }
+
+        OnDamageTaken?.Invoke(this, EventArgs.Empty);
     }
 
     public void KnockBack(float knockBackPower)
