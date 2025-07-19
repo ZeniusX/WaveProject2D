@@ -42,7 +42,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
     private void GameInput_OnReloadPerformed(object sender, EventArgs e)
     {
-        if (!isReloading)
+        if (!isReloading && weaponData.currentAmmoCount != weaponTypeSO.weaponSettings.ammoCount)
         {
             StartCoroutine(ReloadCurrentWeapon());
         }

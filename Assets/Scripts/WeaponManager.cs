@@ -8,7 +8,7 @@ public class WeaponManager : MonoBehaviour
 
     public event EventHandler OnWeaponDataDictionaryChange;
 
-    public struct WeaponData
+    public class WeaponData
     {
         public int currentAmmoCount;
     }
@@ -22,7 +22,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     [SerializeField] private Transform bulletPrefab;
-    [SerializeField] private int bulletSize = 50;
+    [SerializeField] private int bulletPoolSize = 10;
 
     private ObjectPool<Transform> objectPool;
     private Dictionary<WeaponType, WeaponData> weaponDataDictionary;
@@ -31,7 +31,7 @@ public class WeaponManager : MonoBehaviour
     {
         Instance = this;
 
-        objectPool = new ObjectPool<Transform>(bulletPrefab, bulletSize, this.transform);
+        objectPool = new ObjectPool<Transform>(bulletPrefab, bulletPoolSize, transform);
 
         weaponDataDictionary = new Dictionary<WeaponType, WeaponData>();
     }
@@ -43,9 +43,10 @@ public class WeaponManager : MonoBehaviour
 
     public void AddWeaponData(WeaponType weaponType, WeaponData weaponData)
     {
-        weaponDataDictionary.Add(weaponType, weaponData);
-
-        OnWeaponDataDictionaryChange?.Invoke(this, EventArgs.Empty);
+        if (weaponDataDictionary.TryAdd(weaponType, weaponData))
+        {
+            OnWeaponDataDictionaryChange?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public bool HasWeaponData(WeaponType weaponType)
@@ -56,7 +57,6 @@ public class WeaponManager : MonoBehaviour
     public void SetWeaponData(WeaponType weaponType, WeaponData weaponData)
     {
         weaponDataDictionary[weaponType] = weaponData;
-
         OnWeaponDataDictionaryChange?.Invoke(this, EventArgs.Empty);
     }
 
