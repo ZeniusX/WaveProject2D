@@ -20,7 +20,6 @@ public class Damageable : MonoBehaviour, IDamageable
         if (isDead) return;
 
         currentHealth = Mathf.Max(currentHealth -= damageProfile.damageTaken, 0);
-        Debug.Log(currentHealth);
 
         KnockBack(damageProfile.knockBackPower);
 
