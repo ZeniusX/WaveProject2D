@@ -1,50 +1,46 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-
 
 public class FPSDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI fpsText;
 
-    private float pollingTime = 0.5f;
-    private float time;
-    private int frameCount;
-    private int refreshRate;
+    [SerializeField] private float pollingInterval = 0.1f;
+    private float timeSinceLastUpdate = 0f;
 
-    private void Start()
+    private void Awake()
     {
         QualitySettings.vSyncCount = 0;
-
-        Application.targetFrameRate = 999;
-        Debug.Log($"Frame rate set to: {Application.targetFrameRate}");
-
-        refreshRate = Screen.currentResolution.refreshRateRatio.value.ConvertTo<int>();
-        Debug.Log($"Your monitor is running at {refreshRate} Hz");
+        Application.targetFrameRate = 9999;
     }
 
     private void Update()
     {
-        time += Time.deltaTime;
-        frameCount++;
+        timeSinceLastUpdate += Time.unscaledDeltaTime;
 
-        if (time >= pollingTime)
+        if (timeSinceLastUpdate >= pollingInterval)
         {
-            int fps = Mathf.RoundToInt(frameCount / time);
-            fpsText.text = $"{fps}";
-            time -= pollingTime;
-            frameCount = 0;
+            float currentFPS = 1f / Time.unscaledDeltaTime;
+            fpsText.text = $"{Mathf.RoundToInt(currentFPS)}";
+            timeSinceLastUpdate = 0f;
         }
+
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            if (Application.targetFrameRate > 60)
+            if (QualitySettings.vSyncCount == 1)
             {
-                Application.targetFrameRate = refreshRate;
+                // Disable VSync and set a high FPS cap
+                QualitySettings.vSyncCount = 0;
+                Application.targetFrameRate = 9999;
+                Debug.Log("VSync OFF, FPS uncapped");
             }
             else
             {
-                Application.targetFrameRate = 999;
+                // Enable VSync and let it control the FPS
+                QualitySettings.vSyncCount = 1;
+                Application.targetFrameRate = -1;
+                Debug.Log("VSync ON, FPS capped to monitor refresh rate");
             }
         }
     }
