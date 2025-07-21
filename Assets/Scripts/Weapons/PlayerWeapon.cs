@@ -65,7 +65,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
     private void Shoot()
     {
-        if (fireCooldown <= 0f && weaponData.currentAmmoCount > 0 && !isReloading)
+        if (!GameManager.Instance.IsGamePaused() && fireCooldown <= 0f && weaponData.currentAmmoCount > 0 && !isReloading)
         {
             for (int i = 0; i < weaponTypeSO.weaponSettings.bulletsPerShot; i++)
             {

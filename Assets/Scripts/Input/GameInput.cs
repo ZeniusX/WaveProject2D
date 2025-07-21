@@ -11,6 +11,8 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnHotbar_3_Performed;
     public event EventHandler OnHotbar_4_Performed;
 
+    public event EventHandler OnPausePerformed;
+
     public event EventHandler OnReloadPerformed;
     public event EventHandler<OnMouseLeftClickEventArgs> OnMouseLeftClick;
     public class OnMouseLeftClickEventArgs : EventArgs
@@ -44,6 +46,13 @@ public class GameInput : MonoBehaviour
         inputActions.UI.Hotbar_2.performed += Hotbar_2_Performed;
         inputActions.UI.Hotbar_3.performed += Hotbar_3_Performed;
         inputActions.UI.Hotbar_4.performed += Hotbar_4_Performed;
+
+        inputActions.UI.Pause.performed += Pause_Performed;
+    }
+
+    private void Pause_Performed(InputAction.CallbackContext context)
+    {
+        OnPausePerformed?.Invoke(this, EventArgs.Empty);
     }
 
     private void Hotbar_1_Performed(InputAction.CallbackContext context)

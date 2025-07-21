@@ -14,8 +14,12 @@ public static class SceneLoader
 
     public static void LoadScene(Scene scene)
     {
-        targetScene = scene;
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1f;
+        }
 
+        targetScene = scene;
         SceneManager.LoadScene(Scene.LoadingScene.ToString());
     }
 

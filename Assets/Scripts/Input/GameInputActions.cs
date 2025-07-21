@@ -239,6 +239,15 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""13c2174a-d441-4562-bc09-09ef5dcdf19b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -285,6 +294,17 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Hotbar_4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e694dbbd-9329-4519-bfe5-a45a9b09d700"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -302,6 +322,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         m_UI_Hotbar_2 = m_UI.FindAction("Hotbar_2", throwIfNotFound: true);
         m_UI_Hotbar_3 = m_UI.FindAction("Hotbar_3", throwIfNotFound: true);
         m_UI_Hotbar_4 = m_UI.FindAction("Hotbar_4", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@GameInputActions()
@@ -505,6 +526,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Hotbar_2;
     private readonly InputAction m_UI_Hotbar_3;
     private readonly InputAction m_UI_Hotbar_4;
+    private readonly InputAction m_UI_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -532,6 +554,10 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Hotbar_4".
         /// </summary>
         public InputAction @Hotbar_4 => m_Wrapper.m_UI_Hotbar_4;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -570,6 +596,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
             @Hotbar_4.started += instance.OnHotbar_4;
             @Hotbar_4.performed += instance.OnHotbar_4;
             @Hotbar_4.canceled += instance.OnHotbar_4;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -593,6 +622,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
             @Hotbar_4.started -= instance.OnHotbar_4;
             @Hotbar_4.performed -= instance.OnHotbar_4;
             @Hotbar_4.canceled -= instance.OnHotbar_4;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -690,5 +722,12 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHotbar_4(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
 }
