@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,8 +14,11 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI soundVolumeText;
 
     [Space]
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private TMP_Dropdown framerateDropdown;
+    [SerializeField] private Toggle fullscreenToggle;
     [SerializeField] private Toggle vSyncToggle;
+    [SerializeField] private Toggle fpsDisplayToggle;
 
     [Space]
     [SerializeField] private Button closeButton;
@@ -40,8 +44,10 @@ public class OptionsUI : MonoBehaviour
         musicVolumeSlider.value = MusicManager.Instance.GetMusicVolume();
         soundVolumeSlider.value = SoundManager.Instance.GetSoundVolume();
 
+        SetResolutionDropdown();
         SetFramerateDropdown();
         SetVSyncToggle();
+        SetFPSDisplay();
 
         Hide();
     }
@@ -54,10 +60,30 @@ public class OptionsUI : MonoBehaviour
         }
     }
 
+    private void SetResolutionDropdown()
+    {
+        resolutionDropdown.ClearOptions();
+        resolutionDropdown.AddOptions
+        (
+            OptionsManager.Instance
+                .GetResolutionList()
+                .Select(res => res.width + " x " + res.height)
+                .ToList()
+        );
+    }
+
     private void SetFramerateDropdown()
     {
         framerateDropdown.ClearOptions();
-        framerateDropdown.AddOptions(new List<string>(Enum.GetNames(typeof(OptionsManager.FramerateOption))));
+        framerateDropdown.AddOptions
+        (
+            new List<string>
+            (
+                Enum.GetNames(typeof(OptionsManager.FramerateOption))
+                .Select(name => name.Replace("Limit", ""))
+                .ToList()
+            )
+        );
         framerateDropdown.SetValueWithoutNotify(OptionsManager.Instance.GetCurrentFrameRate());
         framerateDropdown.onValueChanged.AddListener(OnFramerateChanged);
     }
@@ -68,6 +94,12 @@ public class OptionsUI : MonoBehaviour
         vSyncToggle.onValueChanged.AddListener(OnVSyncChanged);
     }
 
+    private void SetFPSDisplay()
+    {
+        fpsDisplayToggle.SetIsOnWithoutNotify(FPSDisplay.Instance.GetCurrentFPSDisplay());
+        fpsDisplayToggle.onValueChanged.AddListener(OnFPSToggle);
+    }
+
     private void OnFramerateChanged(int index)
     {
         OptionsManager.Instance.SetFrameRateOption(index);
@@ -76,6 +108,11 @@ public class OptionsUI : MonoBehaviour
     private void OnVSyncChanged(bool isVsyncON)
     {
         OptionsManager.Instance.SetVSyncOption(isVsyncON);
+    }
+
+    private void OnFPSToggle(bool isFPSDisplay)
+    {
+        FPSDisplay.Instance.DisplayFPS(isFPSDisplay);
     }
 
     private void SetMusicSliderValue(float value)

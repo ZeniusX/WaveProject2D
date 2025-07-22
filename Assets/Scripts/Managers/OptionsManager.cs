@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Unity.VisualScripting.AssemblyQualifiedNameParser;
 using UnityEngine;
 
@@ -11,23 +12,31 @@ public class OptionsManager : MonoBehaviour
 
     public enum FramerateOption
     {
-        Uncapped,
+        LimitUncapped,
         Limit30,
         Limit60,
         Limit120,
         Limit180,
-        Limit240,
+        Limit240
     }
 
+    private Resolution[] allResolutions;
     private FramerateOption currentFrameRate;
+
+    private int selectedResolution;
+
+    private bool isFullscreen;
+    private bool isVsyncON;
 
     private void Awake()
     {
         Instance = this;
-        currentFrameRate = (FramerateOption)PlayerPrefs.GetInt(PLAYER_PREFS_FRAMERATE_OPTION, (int)GetCurrentFramerateOption());
 
         SetVSyncOption(Convert.ToBoolean(PlayerPrefs.GetInt(PLAYER_PREFS_VSYNC_OPTION)));
-        SetFrameRateOption((int)currentFrameRate);
+        SetFrameRateOption(PlayerPrefs.GetInt(PLAYER_PREFS_FRAMERATE_OPTION, (int)GetCurrentFramerateOption()));
+
+        isFullscreen = true;
+        allResolutions = Screen.resolutions.OrderByDescending(res => res.width).ThenByDescending(res => res.height).ToArray();
     }
 
     private FramerateOption GetCurrentFramerateOption()
@@ -38,7 +47,7 @@ public class OptionsManager : MonoBehaviour
         if (fps >= 120) return FramerateOption.Limit120;
         if (fps >= 60) return FramerateOption.Limit60;
         if (fps >= 30) return FramerateOption.Limit30;
-        return FramerateOption.Uncapped;
+        return FramerateOption.LimitUncapped;
     }
 
     public void SetFrameRateOption(int index)
@@ -47,8 +56,8 @@ public class OptionsManager : MonoBehaviour
 
         switch (option)
         {
-            case FramerateOption.Uncapped:
-                currentFrameRate = FramerateOption.Uncapped;
+            case FramerateOption.LimitUncapped:
+                currentFrameRate = FramerateOption.LimitUncapped;
                 Application.targetFrameRate = -1;
                 break;
             case FramerateOption.Limit30:
@@ -78,6 +87,7 @@ public class OptionsManager : MonoBehaviour
 
     public void SetVSyncOption(bool isVsyncON)
     {
+        this.isVsyncON = isVsyncON;
         QualitySettings.vSyncCount = isVsyncON ? 1 : 0;
         PlayerPrefs.SetInt(PLAYER_PREFS_VSYNC_OPTION, Convert.ToInt16(isVsyncON));
     }
@@ -90,5 +100,10 @@ public class OptionsManager : MonoBehaviour
     public int GetCurrentVsyncSettings()
     {
         return QualitySettings.vSyncCount;
+    }
+
+    public Resolution[] GetResolutionList()
+    {
+        return allResolutions;
     }
 }
