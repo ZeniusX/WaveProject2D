@@ -45,6 +45,7 @@ public class OptionsUI : MonoBehaviour
         soundVolumeSlider.value = SoundManager.Instance.GetSoundVolume();
 
         SetResolutionDropdown();
+        SetFullscreenToggle();
         SetFramerateDropdown();
         SetVSyncToggle();
         SetFPSDisplay();
@@ -70,6 +71,14 @@ public class OptionsUI : MonoBehaviour
                 .Select(res => res.width + " x " + res.height)
                 .ToList()
         );
+        resolutionDropdown.SetValueWithoutNotify(OptionsManager.Instance.GetCurrentResolution());
+        resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
+    }
+
+    private void SetFullscreenToggle()
+    {
+        fullscreenToggle.SetIsOnWithoutNotify(OptionsManager.Instance.GetFullscreenState());
+        fullscreenToggle.onValueChanged.AddListener(OnFullscreenChanged);
     }
 
     private void SetFramerateDropdown()
@@ -90,7 +99,7 @@ public class OptionsUI : MonoBehaviour
 
     private void SetVSyncToggle()
     {
-        vSyncToggle.SetIsOnWithoutNotify(Convert.ToBoolean(OptionsManager.Instance.GetCurrentVsyncSettings()));
+        vSyncToggle.SetIsOnWithoutNotify(OptionsManager.Instance.GetVsyncState());
         vSyncToggle.onValueChanged.AddListener(OnVSyncChanged);
     }
 
@@ -98,6 +107,16 @@ public class OptionsUI : MonoBehaviour
     {
         fpsDisplayToggle.SetIsOnWithoutNotify(FPSDisplay.Instance.GetCurrentFPSDisplay());
         fpsDisplayToggle.onValueChanged.AddListener(OnFPSToggle);
+    }
+
+    private void OnFullscreenChanged(bool isFullscreen)
+    {
+        OptionsManager.Instance.SetFullscreenOption(isFullscreen);
+    }
+
+    private void OnResolutionChanged(int value)
+    {
+        OptionsManager.Instance.SetResolutionOption(value);
     }
 
     private void OnFramerateChanged(int index)

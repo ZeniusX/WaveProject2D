@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class OptionsManager : MonoBehaviour
 {
+    private const string PLAYER_PREFS_RESOLUTION_OPTION = "ResolutionOption";
+    private const string PLAYER_PREFS_FULLSCREEN_OPTION = "FullscreenOption";
     private const string PLAYER_PREFS_VSYNC_OPTION = "VsyncOption";
     private const string PLAYER_PREFS_FRAMERATE_OPTION = "FramerateOption";
 
@@ -23,7 +25,7 @@ public class OptionsManager : MonoBehaviour
     private Resolution[] allResolutions;
     private FramerateOption currentFrameRate;
 
-    private int selectedResolution;
+    private int currentResolution;
 
     private bool isFullscreen;
     private bool isVsyncON;
@@ -32,11 +34,36 @@ public class OptionsManager : MonoBehaviour
     {
         Instance = this;
 
-        SetVSyncOption(Convert.ToBoolean(PlayerPrefs.GetInt(PLAYER_PREFS_VSYNC_OPTION)));
-        SetFrameRateOption(PlayerPrefs.GetInt(PLAYER_PREFS_FRAMERATE_OPTION, (int)GetCurrentFramerateOption()));
-
         isFullscreen = true;
         allResolutions = Screen.resolutions.OrderByDescending(res => res.width).ThenByDescending(res => res.height).ToArray();
+
+        for (int i = 0; i < allResolutions.Length; i++)
+        {
+            if (allResolutions[i].width == Screen.currentResolution.width && allResolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResolution = i;
+                break;
+            }
+        }
+
+        SetResolutionOption(PlayerPrefs.GetInt(PLAYER_PREFS_RESOLUTION_OPTION, currentResolution));
+        SetFullscreenOption(Convert.ToBoolean(PlayerPrefs.GetInt(PLAYER_PREFS_FULLSCREEN_OPTION, 0)));
+        SetVSyncOption(Convert.ToBoolean(PlayerPrefs.GetInt(PLAYER_PREFS_VSYNC_OPTION, 0)));
+        SetFrameRateOption(PlayerPrefs.GetInt(PLAYER_PREFS_FRAMERATE_OPTION, (int)GetCurrentFramerateOption()));
+    }
+
+    public void SetResolutionOption(int index)
+    {
+        currentResolution = index;
+        Screen.SetResolution(allResolutions[index].width, allResolutions[index].height, isFullscreen);
+        PlayerPrefs.SetInt(PLAYER_PREFS_RESOLUTION_OPTION, index);
+    }
+
+    public void SetFullscreenOption(bool isFullscreen)
+    {
+        this.isFullscreen = isFullscreen;
+        Screen.SetResolution(allResolutions[currentResolution].width, allResolutions[currentResolution].height, isFullscreen);
+        PlayerPrefs.SetInt(PLAYER_PREFS_FULLSCREEN_OPTION, Convert.ToInt16(isFullscreen));
     }
 
     private FramerateOption GetCurrentFramerateOption()
@@ -97,13 +124,23 @@ public class OptionsManager : MonoBehaviour
         return (int)currentFrameRate;
     }
 
-    public int GetCurrentVsyncSettings()
+    public bool GetVsyncState()
     {
-        return QualitySettings.vSyncCount;
+        return isVsyncON;
     }
 
     public Resolution[] GetResolutionList()
     {
         return allResolutions;
+    }
+
+    public int GetCurrentResolution()
+    {
+        return currentResolution;
+    }
+
+    public bool GetFullscreenState()
+    {
+        return isFullscreen;
     }
 }
