@@ -8,14 +8,6 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnGamePaused;
     public event EventHandler OnGameUnPaused;
 
-    // private enum State
-    // {
-    //     WaitingToStart,
-    //     CountdownToStart,
-    //     GamePlaying,
-    //     GameOver
-    // }
-
     private bool isGamePaused;
 
     private void Awake()
@@ -33,7 +25,7 @@ public class GameManager : MonoBehaviour
         TogglePauseGame();
     }
 
-    private void TogglePauseGame()
+    public void TogglePauseGame()
     {
         isGamePaused = !isGamePaused;
         if (isGamePaused)

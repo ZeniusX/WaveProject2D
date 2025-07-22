@@ -4,15 +4,9 @@ using UnityEngine;
 public class FPSDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI fpsText;
-
     [SerializeField] private float pollingInterval = 0.1f;
-    private float timeSinceLastUpdate = 0f;
 
-    private void Awake()
-    {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 9999;
-    }
+    private float timeSinceLastUpdate = 0f;
 
     private void Update()
     {
@@ -25,23 +19,21 @@ public class FPSDisplay : MonoBehaviour
             timeSinceLastUpdate = 0f;
         }
 
-
         if (Input.GetKeyDown(KeyCode.V))
         {
             if (QualitySettings.vSyncCount == 1)
             {
-                // Disable VSync and set a high FPS cap
                 QualitySettings.vSyncCount = 0;
                 Application.targetFrameRate = 9999;
                 Debug.Log("VSync OFF, FPS uncapped");
             }
             else
             {
-                // Enable VSync and let it control the FPS
                 QualitySettings.vSyncCount = 1;
                 Application.targetFrameRate = -1;
                 Debug.Log("VSync ON, FPS capped to monitor refresh rate");
             }
         }
     }
+
 }

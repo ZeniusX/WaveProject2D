@@ -77,7 +77,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
                 bullet.FireBullet(weaponTypeSO.bulletSettings, Player.Instance.GetTargetMask());
             }
 
-            AudioSource.PlayClipAtPoint
+            SoundManager.Instance.PlaySound
             (
                 weaponTypeSO.weaponSettings.audioClipList
                 [
