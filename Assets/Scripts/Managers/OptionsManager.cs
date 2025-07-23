@@ -55,15 +55,20 @@ public class OptionsManager : MonoBehaviour
     public void SetResolutionOption(int index)
     {
         currentResolution = index;
-        Screen.SetResolution(allResolutions[index].width, allResolutions[index].height, isFullscreen);
+        SetResolution();
         PlayerPrefs.SetInt(PLAYER_PREFS_RESOLUTION_OPTION, index);
     }
 
     public void SetFullscreenOption(bool isFullscreen)
     {
         this.isFullscreen = isFullscreen;
-        Screen.SetResolution(allResolutions[currentResolution].width, allResolutions[currentResolution].height, isFullscreen);
+        SetResolution();
         PlayerPrefs.SetInt(PLAYER_PREFS_FULLSCREEN_OPTION, Convert.ToInt16(isFullscreen));
+    }
+
+    private void SetResolution()
+    {
+        Screen.SetResolution(allResolutions[currentResolution].width, allResolutions[currentResolution].height, isFullscreen);
     }
 
     private FramerateOption GetCurrentFramerateOption()
