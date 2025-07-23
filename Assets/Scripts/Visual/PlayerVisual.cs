@@ -24,8 +24,6 @@ public class PlayerVisual : MonoBehaviour
         damageable.OnDamageTaken += Damageable_OnDamageTaken;
     }
 
-    private void Damageable_OnDamageTaken(object sender, EventArgs e) => StartCoroutine(PlayerHit());
-
     private IEnumerator PlayerHit()
     {
         if (isFlashing) yield break;
@@ -43,6 +41,8 @@ public class PlayerVisual : MonoBehaviour
 
         isFlashing = false;
     }
+
+    private void Damageable_OnDamageTaken(object sender, EventArgs e) => StartCoroutine(PlayerHit());
 
     private void OnDestroy() => damageable.OnDamageTaken -= Damageable_OnDamageTaken;
 }

@@ -23,8 +23,6 @@ public class EnemyVisual : MonoBehaviour
         damageable.OnDamageTaken += Damageable_OnDamageTaken;
     }
 
-    private void Damageable_OnDamageTaken(object sender, EventArgs e) => StartCoroutine(EnemyHit());
-
     private IEnumerator EnemyHit()
     {
         if (isFlashing) yield break;
@@ -42,6 +40,8 @@ public class EnemyVisual : MonoBehaviour
 
         isFlashing = false;
     }
+
+    private void Damageable_OnDamageTaken(object sender, EventArgs e) => StartCoroutine(EnemyHit());
 
     private void OnDestroy() => damageable.OnDamageTaken -= Damageable_OnDamageTaken;
 }
