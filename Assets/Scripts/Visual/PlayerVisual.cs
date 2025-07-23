@@ -24,10 +24,7 @@ public class PlayerVisual : MonoBehaviour
         damageable.OnDamageTaken += Damageable_OnDamageTaken;
     }
 
-    private void Damageable_OnDamageTaken(object sender, EventArgs e)
-    {
-        StartCoroutine(PlayerHit());
-    }
+    private void Damageable_OnDamageTaken(object sender, EventArgs e) => StartCoroutine(PlayerHit());
 
     private IEnumerator PlayerHit()
     {
@@ -47,8 +44,5 @@ public class PlayerVisual : MonoBehaviour
         isFlashing = false;
     }
 
-    private void OnDestroy()
-    {
-        damageable.OnDamageTaken -= Damageable_OnDamageTaken;
-    }
+    private void OnDestroy() => damageable.OnDamageTaken -= Damageable_OnDamageTaken;
 }

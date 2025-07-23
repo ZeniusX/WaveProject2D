@@ -89,7 +89,6 @@ public class OptionsUI : MonoBehaviour
             (
                 Enum.GetNames(typeof(OptionsManager.FramerateOption))
                 .Select(name => name.Replace("Limit", ""))
-                .ToList()
             )
         );
         framerateDropdown.SetValueWithoutNotify((int)OptionsManager.Instance.GetCurrentFrameRate());
@@ -136,5 +135,9 @@ public class OptionsUI : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void Hide() => gameObject.SetActive(false);
+    private void Hide()
+    {
+        PlayerPrefs.Save();
+        gameObject.SetActive(false);
+    }
 }
