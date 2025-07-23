@@ -8,6 +8,7 @@ public class OptionsManager : MonoBehaviour
     private const string PLAYER_PREFS_FULLSCREEN_OPTION = "FullscreenOption";
     private const string PLAYER_PREFS_VSYNC_OPTION = "VsyncOption";
     private const string PLAYER_PREFS_FRAMERATE_OPTION = "FramerateOption";
+    private const string PLAYER_PREFS_AUTO_RELOAD_OPTION = "AutoReloadOption";
 
     public static OptionsManager Instance { get; private set; }
 
@@ -28,6 +29,7 @@ public class OptionsManager : MonoBehaviour
 
     private bool isFullscreen;
     private bool isVsyncON;
+    private bool isAutoReloading;
 
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class OptionsManager : MonoBehaviour
         SetFullscreenOption(PlayerPrefs.GetInt(PLAYER_PREFS_FULLSCREEN_OPTION, 0) == 1);
         SetVSyncOption(PlayerPrefs.GetInt(PLAYER_PREFS_VSYNC_OPTION, 0) == 1);
         SetFrameRateOption(PlayerPrefs.GetInt(PLAYER_PREFS_FRAMERATE_OPTION, (int)GetCurrentFramerateOption()));
+        SetAutoReloadState(PlayerPrefs.GetInt(PLAYER_PREFS_AUTO_RELOAD_OPTION, 0) == 1);
     }
 
     public void SetResolutionOption(int index)
@@ -127,6 +130,12 @@ public class OptionsManager : MonoBehaviour
         PlayerPrefs.SetInt(PLAYER_PREFS_VSYNC_OPTION, isVsyncON ? 1 : 0);
     }
 
+    public void SetAutoReloadState(bool isAutoReloading)
+    {
+        this.isAutoReloading = isAutoReloading;
+        PlayerPrefs.SetInt(PLAYER_PREFS_AUTO_RELOAD_OPTION, isAutoReloading ? 1 : 0);
+    }
+
     public FramerateOption GetCurrentFrameRate() => currentFrameRate;
 
     public bool GetVsyncState() => isVsyncON;
@@ -136,4 +145,6 @@ public class OptionsManager : MonoBehaviour
     public int GetCurrentResolution() => currentResolution;
 
     public bool GetFullscreenState() => isFullscreen;
+
+    public bool GetAutoReloadState() => isAutoReloading;
 }

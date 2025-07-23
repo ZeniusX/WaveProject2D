@@ -96,6 +96,11 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
             fireCooldown = weaponTypeSO.weaponSettings.fireRate;
 
+            if (OptionsManager.Instance.GetAutoReloadState() && weaponData.currentAmmoCount == 0)
+            {
+                StartCoroutine(ReloadCurrentWeapon());
+            }
+
             OnWeaponShoot?.Invoke(this, EventArgs.Empty);
         }
     }

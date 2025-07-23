@@ -18,6 +18,7 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private Toggle fullscreenToggle;
     [SerializeField] private Toggle vSyncToggle;
     [SerializeField] private Toggle fpsDisplayToggle;
+    [SerializeField] private Toggle autoReloadToggle;
 
     [Space]
     [SerializeField] private Button closeButton;
@@ -31,25 +32,27 @@ public class OptionsUI : MonoBehaviour
             Hide();
             closeAction?.Invoke();
         });
-
-        musicVolumeSlider.onValueChanged.AddListener(SetMusicSliderValue);
-        soundVolumeSlider.onValueChanged.AddListener(SetSoundSliderValue);
     }
 
     private void Start()
     {
         GameManager.Instance.OnGameUnPaused += GameManager_OnGameUnPaused;
 
-        musicVolumeSlider.value = MusicManager.Instance.GetMusicVolume();
-        soundVolumeSlider.value = SoundManager.Instance.GetSoundVolume();
+        SetOptions();
 
+        Hide();
+    }
+
+    private void SetOptions()
+    {
+        SetMusicSliderValue();
+        SetSoundSliderValue();
         SetResolutionDropdown();
         SetFullscreenToggle();
         SetFramerateDropdown();
         SetVSyncToggle();
-        SetFPSDisplay();
-
-        Hide();
+        SetFPSDisplayToggle();
+        SetAutoReloadToggle();
     }
 
     private void GameManager_OnGameUnPaused(object sender, EventArgs e)
@@ -60,6 +63,20 @@ public class OptionsUI : MonoBehaviour
         }
     }
 
+    private void SetMusicSliderValue()
+    {
+        musicVolumeSlider.SetValueWithoutNotify(MusicManager.Instance.GetMusicVolume());
+        musicVolumeText.text = $"{musicVolumeSlider.value * 100:0}%";
+        musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
+    }
+
+    private void SetSoundSliderValue()
+    {
+        soundVolumeSlider.SetValueWithoutNotify(SoundManager.Instance.GetSoundVolume());
+        soundVolumeText.text = $"{soundVolumeSlider.value * 100:0}%";
+        soundVolumeSlider.onValueChanged.AddListener(OnSoundVolumeChanged);
+    }
+
     private void SetResolutionDropdown()
     {
         resolutionDropdown.ClearOptions();
@@ -67,7 +84,7 @@ public class OptionsUI : MonoBehaviour
         (
             OptionsManager.Instance
                 .GetResolutionList()
-                .Select(res => res.width + " x " + res.height)
+                .Select(res => $"{res.width} x {res.height}")
                 .ToList()
         );
         resolutionDropdown.SetValueWithoutNotify(OptionsManager.Instance.GetCurrentResolution());
@@ -101,10 +118,28 @@ public class OptionsUI : MonoBehaviour
         vSyncToggle.onValueChanged.AddListener(OnVSyncChanged);
     }
 
-    private void SetFPSDisplay()
+    private void SetFPSDisplayToggle()
     {
         fpsDisplayToggle.SetIsOnWithoutNotify(FPSDisplay.Instance.GetCurrentFPSDisplay());
         fpsDisplayToggle.onValueChanged.AddListener(OnFPSToggle);
+    }
+
+    private void SetAutoReloadToggle()
+    {
+        autoReloadToggle.SetIsOnWithoutNotify(OptionsManager.Instance.GetAutoReloadState());
+        autoReloadToggle.onValueChanged.AddListener(OnAutoReloadChanged);
+    }
+
+    private void OnMusicVolumeChanged(float value)
+    {
+        MusicManager.Instance.SetMusicVolume(value);
+        musicVolumeText.text = $"{value * 100:0}%";
+    }
+
+    private void OnSoundVolumeChanged(float value)
+    {
+        SoundManager.Instance.SetSoundVolume(value);
+        soundVolumeText.text = $"{value * 100:0}%";
     }
 
     private void OnFullscreenChanged(bool isFullscreen) => OptionsManager.Instance.SetFullscreenOption(isFullscreen);
@@ -117,17 +152,7 @@ public class OptionsUI : MonoBehaviour
 
     private void OnFPSToggle(bool isFPSDisplay) => FPSDisplay.Instance.DisplayFPS(isFPSDisplay);
 
-    private void SetMusicSliderValue(float value)
-    {
-        MusicManager.Instance.SetMusicVolume(value);
-        musicVolumeText.text = $"{value * 100:0}%";
-    }
-
-    private void SetSoundSliderValue(float value)
-    {
-        SoundManager.Instance.SetSoundVolume(value);
-        soundVolumeText.text = $"{value * 100:0}%";
-    }
+    private void OnAutoReloadChanged(bool isAutoReloading) => OptionsManager.Instance.SetAutoReloadState(isAutoReloading);
 
     public void Show(Action closeAction)
     {
