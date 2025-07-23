@@ -55,23 +55,11 @@ public class PauseUI : MonoBehaviour
         Hide();
     }
 
-    private void GameManager_OnGamePaused(object sender, EventArgs e)
-    {
-        Show();
-    }
+    private void GameManager_OnGamePaused(object sender, EventArgs e) => Show();
 
-    private void GameManager_OnGameUnPaused(object sender, EventArgs e)
-    {
-        Hide();
-    }
+    private void GameManager_OnGameUnPaused(object sender, EventArgs e) => Hide();
 
-    private void Show()
-    {
-        gameObject.SetActive(true);
-    }
+    private void Show() => gameObject.SetActive(true);
 
-    private void Hide()
-    {
-        gameObject.SetActive(false);
-    }
+    private void Hide() => gameObject.SetActive(false);
 }

@@ -129,13 +129,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         GameInput.Instance.OnReloadPerformed -= GameInput_OnReloadPerformed;
     }
 
-    public Transform GetWeaponFirePoint()
-    {
-        return weaponFirePoint;
-    }
+    public Transform GetWeaponFirePoint() => weaponFirePoint;
 
-    public WeaponTypeSO GetWeaponTypeSO()
-    {
-        return weaponTypeSO;
-    }
+    public WeaponTypeSO GetWeaponTypeSO() => weaponTypeSO;
 }

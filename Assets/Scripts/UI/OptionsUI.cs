@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -93,7 +92,7 @@ public class OptionsUI : MonoBehaviour
                 .ToList()
             )
         );
-        framerateDropdown.SetValueWithoutNotify(OptionsManager.Instance.GetCurrentFrameRate());
+        framerateDropdown.SetValueWithoutNotify((int)OptionsManager.Instance.GetCurrentFrameRate());
         framerateDropdown.onValueChanged.AddListener(OnFramerateChanged);
     }
 
@@ -109,30 +108,15 @@ public class OptionsUI : MonoBehaviour
         fpsDisplayToggle.onValueChanged.AddListener(OnFPSToggle);
     }
 
-    private void OnFullscreenChanged(bool isFullscreen)
-    {
-        OptionsManager.Instance.SetFullscreenOption(isFullscreen);
-    }
+    private void OnFullscreenChanged(bool isFullscreen) => OptionsManager.Instance.SetFullscreenOption(isFullscreen);
 
-    private void OnResolutionChanged(int value)
-    {
-        OptionsManager.Instance.SetResolutionOption(value);
-    }
+    private void OnResolutionChanged(int value) => OptionsManager.Instance.SetResolutionOption(value);
 
-    private void OnFramerateChanged(int index)
-    {
-        OptionsManager.Instance.SetFrameRateOption(index);
-    }
+    private void OnFramerateChanged(int index) => OptionsManager.Instance.SetFrameRateOption(index);
 
-    private void OnVSyncChanged(bool isVsyncON)
-    {
-        OptionsManager.Instance.SetVSyncOption(isVsyncON);
-    }
+    private void OnVSyncChanged(bool isVsyncON) => OptionsManager.Instance.SetVSyncOption(isVsyncON);
 
-    private void OnFPSToggle(bool isFPSDisplay)
-    {
-        FPSDisplay.Instance.DisplayFPS(isFPSDisplay);
-    }
+    private void OnFPSToggle(bool isFPSDisplay) => FPSDisplay.Instance.DisplayFPS(isFPSDisplay);
 
     private void SetMusicSliderValue(float value)
     {
@@ -152,8 +136,5 @@ public class OptionsUI : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void Hide()
-    {
-        gameObject.SetActive(false);
-    }
+    private void Hide() => gameObject.SetActive(false);
 }

@@ -10,11 +10,10 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnHotbar_2_Performed;
     public event EventHandler OnHotbar_3_Performed;
     public event EventHandler OnHotbar_4_Performed;
-
     public event EventHandler OnPausePerformed;
-
     public event EventHandler OnReloadPerformed;
     public event EventHandler<OnMouseLeftClickEventArgs> OnMouseLeftClick;
+
     public class OnMouseLeftClickEventArgs : EventArgs
     {
         public bool isPerformed;
@@ -46,72 +45,40 @@ public class GameInput : MonoBehaviour
         inputActions.UI.Hotbar_2.performed += Hotbar_2_Performed;
         inputActions.UI.Hotbar_3.performed += Hotbar_3_Performed;
         inputActions.UI.Hotbar_4.performed += Hotbar_4_Performed;
-
         inputActions.UI.Pause.performed += Pause_Performed;
     }
 
     private void Pause_Performed(InputAction.CallbackContext context)
-    {
-        OnPausePerformed?.Invoke(this, EventArgs.Empty);
-    }
+        => OnPausePerformed?.Invoke(this, EventArgs.Empty);
 
     private void Hotbar_1_Performed(InputAction.CallbackContext context)
-    {
-        OnHotbar_1_Performed?.Invoke(this, EventArgs.Empty);
-    }
+        => OnHotbar_1_Performed?.Invoke(this, EventArgs.Empty);
 
     private void Hotbar_2_Performed(InputAction.CallbackContext context)
-    {
-        OnHotbar_2_Performed?.Invoke(this, EventArgs.Empty);
-    }
+        => OnHotbar_2_Performed?.Invoke(this, EventArgs.Empty);
 
     private void Hotbar_3_Performed(InputAction.CallbackContext context)
-    {
-        OnHotbar_3_Performed?.Invoke(this, EventArgs.Empty);
-    }
+        => OnHotbar_3_Performed?.Invoke(this, EventArgs.Empty);
 
     private void Hotbar_4_Performed(InputAction.CallbackContext context)
-    {
-        OnHotbar_4_Performed?.Invoke(this, EventArgs.Empty);
-    }
+        => OnHotbar_4_Performed?.Invoke(this, EventArgs.Empty);
 
     private void Reload_Performed(InputAction.CallbackContext context)
-    {
-        OnReloadPerformed?.Invoke(this, EventArgs.Empty);
-    }
+        => OnReloadPerformed?.Invoke(this, EventArgs.Empty);
 
     private void MouseLeftClick_Performed(InputAction.CallbackContext context)
-    {
-        OnMouseLeftClick?.Invoke(this, new OnMouseLeftClickEventArgs(true));
-    }
+        => OnMouseLeftClick?.Invoke(this, new OnMouseLeftClickEventArgs(true));
 
     private void MouseLeftClick_Canceled(InputAction.CallbackContext context)
-    {
-        OnMouseLeftClick?.Invoke(this, new OnMouseLeftClickEventArgs(false));
-    }
+        => OnMouseLeftClick?.Invoke(this, new OnMouseLeftClickEventArgs(false));
 
-    public Vector2 GetMovementInput()
-    {
-        return inputActions.Player.Movement.ReadValue<Vector2>();
-    }
+    public Vector2 GetMovementInput() => inputActions.Player.Movement.ReadValue<Vector2>();
 
-    public Vector2 GetMovementInputNormalized()
-    {
-        return GetMovementInput().normalized;
-    }
+    public Vector2 GetMovementInputNormalized() => GetMovementInput().normalized;
 
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
+    private void OnEnable() => inputActions.Enable();
 
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
+    private void OnDisable() => inputActions.Disable();
 
-    private void OnDestroy()
-    {
-        inputActions.Dispose();
-    }
+    private void OnDestroy() => inputActions.Dispose();
 }

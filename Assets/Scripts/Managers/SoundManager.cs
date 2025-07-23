@@ -27,8 +27,5 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.SetFloat(PLAYER_PREFS_SOUND_VOLUME, soundVolume);
     }
 
-    public float GetSoundVolume()
-    {
-        return soundVolume;
-    }
+    public float GetSoundVolume() => soundVolume;
 }

@@ -54,15 +54,7 @@ public class Player : MonoBehaviour
         playerRb.MoveRotation(Mathf.LerpAngle(playerRb.rotation, angle, Time.fixedDeltaTime * rotateSpeed));
     }
 
-    public Transform GetCurrentPlayerWeapon()
-    {
-        return currentPlayerWeapon;
-    }
 
-    public WeaponTypeSO GetCurrentPlayerWeaponTypeSO()
-    {
-        return GetCurrentPlayerWeapon().GetComponent<PlayerWeapon>().GetWeaponTypeSO();
-    }
 
     public void SetCurrentPlayerWeapon(WeaponTypeSO weaponTypeSO)
     {
@@ -78,8 +70,10 @@ public class Player : MonoBehaviour
         OnCurrentWeaponChange?.Invoke(this, EventArgs.Empty);
     }
 
-    public LayerMask GetTargetMask()
-    {
-        return targetMask;
-    }
+    public WeaponTypeSO GetCurrentPlayerWeaponTypeSO()
+        => GetCurrentPlayerWeapon().GetComponent<PlayerWeapon>().GetWeaponTypeSO();
+
+    public Transform GetCurrentPlayerWeapon() => currentPlayerWeapon;
+
+    public LayerMask GetTargetMask() => targetMask;
 }

@@ -15,7 +15,7 @@ public class ProgressBarUI : MonoBehaviour
         hasProgressGameObject = Player.Instance.GetCurrentPlayerWeapon().gameObject;
 
         SubscribeToProgressGameObject();
-        
+
         Player.Instance.OnCurrentWeaponChange += Player_OnCurrentWeaponChange;
     }
 
@@ -66,13 +66,7 @@ public class ProgressBarUI : MonoBehaviour
         }
     }
 
-    private void Show()
-    {
-        gameObject.SetActive(true);
-    }
+    private void Show() => gameObject.SetActive(true);
 
-    private void Hide()
-    {
-        gameObject.SetActive(false);
-    }
+    private void Hide() => gameObject.SetActive(false);
 }

@@ -36,11 +36,6 @@ public class WeaponManager : MonoBehaviour
         weaponDataDictionary = new Dictionary<WeaponType, WeaponData>();
     }
 
-    public Transform GetAvailableBullet()
-    {
-        return objectPool.Get();
-    }
-
     public void AddWeaponData(WeaponType weaponType, WeaponData weaponData)
     {
         if (weaponDataDictionary.TryAdd(weaponType, weaponData))
@@ -64,4 +59,6 @@ public class WeaponManager : MonoBehaviour
     {
         return weaponDataDictionary[weaponType];
     }
+
+    public Transform GetAvailableBullet() => objectPool.Get();
 }

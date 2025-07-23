@@ -17,7 +17,7 @@ public class FPSDisplay : MonoBehaviour
     {
         Instance = this;
 
-        DisplayFPS(Convert.ToBoolean(PlayerPrefs.GetInt(PLAYER_PREFS_DISPLAY_FPS, 0)));
+        DisplayFPS(PlayerPrefs.GetInt(PLAYER_PREFS_DISPLAY_FPS, 0) == 1);
     }
 
     private void Update()
@@ -30,17 +30,13 @@ public class FPSDisplay : MonoBehaviour
             fpsText.text = $"<color=white>FPS:</color> <color=green>{Mathf.RoundToInt(currentFPS)}</color>";
             timeSinceLastUpdate = 0f;
         }
-
     }
 
     public void DisplayFPS(bool display)
     {
         gameObject.SetActive(display);
-        PlayerPrefs.SetInt(PLAYER_PREFS_DISPLAY_FPS, Convert.ToInt16(display));
+        PlayerPrefs.SetInt(PLAYER_PREFS_DISPLAY_FPS, display ? 1 : 0);
     }
 
-    public bool GetCurrentFPSDisplay()
-    {
-        return Convert.ToBoolean(PlayerPrefs.GetInt(PLAYER_PREFS_DISPLAY_FPS, 0));
-    }
+    public bool GetCurrentFPSDisplay() => PlayerPrefs.GetInt(PLAYER_PREFS_DISPLAY_FPS, 0) == 1;
 }

@@ -30,8 +30,5 @@ public class MusicManager : MonoBehaviour
         PlayerPrefs.SetFloat(PLAYER_PREFS_MUSIC_VOLUME, musicVolume);
     }
 
-    public float GetMusicVolume()
-    {
-        return musicVolume;
-    }
+    public float GetMusicVolume() => musicVolume;
 }
