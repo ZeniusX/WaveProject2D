@@ -10,10 +10,26 @@ public class WeaponHotbarUI : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
+
         GameInput.Instance.OnHotbar_1_Performed += GameInput_OnHotbar_1_Performed;
         GameInput.Instance.OnHotbar_2_Performed += GameInput_OnHotbar_2_Performed;
         GameInput.Instance.OnHotbar_3_Performed += GameInput_OnHotbar_3_Performed;
         GameInput.Instance.OnHotbar_4_Performed += GameInput_OnHotbar_4_Performed;
+
+        Hide();
+    }
+
+    private void GameManager_OnStateChanged(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.IsGamePlaying())
+        {
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
     }
 
     private void OnDestroy()
@@ -31,5 +47,9 @@ public class WeaponHotbarUI : MonoBehaviour
     private void GameInput_OnHotbar_3_Performed(object sender, EventArgs e) => weaponButton_3.SetPlayerWeapon();
 
     private void GameInput_OnHotbar_4_Performed(object sender, EventArgs e) => weaponButton_4.SetPlayerWeapon();
+
+    private void Show() => gameObject.SetActive(true);
+
+    private void Hide() => gameObject.SetActive(false);
 
 }

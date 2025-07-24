@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler OnGamePaused;
     public event EventHandler OnGameUnPaused;
+    public event EventHandler OnStateChanged;
 
     public enum GameState
     {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     private GameState gameState = GameState.WaitingToStart;
     private bool isGamePaused;
     private float countdownToStartTimer = 5f;
+    private float gamePlayingTimer = default;
 
     private void Awake()
     {
@@ -42,9 +44,11 @@ public class GameManager : MonoBehaviour
                 if (countdownToStartTimer <= 0f)
                 {
                     gameState = GameState.GamePlaying;
+                    OnStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;
             case GameState.GamePlaying:
+                gamePlayingTimer += Time.deltaTime;
                 break;
             case GameState.GameOver:
                 break;
@@ -66,13 +70,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void GameInput_OnInteractPerformed(object sender, EventArgs e)
+    {
+        gameState = GameState.CountdownToStart;
+        OnStateChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void SetGameOver()
+    {
+        gameState = GameState.GameOver;
+        OnStateChanged?.Invoke(this, EventArgs.Empty);
+    }
+
     private void GameInput_OnPausePerformed(object sender, EventArgs e) => TogglePauseGame();
 
-    private void GameInput_OnInteractPerformed(object sender, EventArgs e) => gameState = GameState.CountdownToStart;
-
-    public void SetGameOver() => gameState = GameState.GameOver;
-
     public float GetCountdownToStartTimer() => countdownToStartTimer;
+
+    public float GetGamePlayingCounter() => gamePlayingTimer;
 
     public bool IsGamePaused() => isGamePaused;
 

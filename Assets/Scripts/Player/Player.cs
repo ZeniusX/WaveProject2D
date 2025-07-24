@@ -35,8 +35,11 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandlePlayerMovement();
-        HandlePlayerRotation();
+        if (GameManager.Instance.IsGamePlaying())
+        {
+            HandlePlayerMovement();
+            HandlePlayerRotation();
+        }
     }
 
     private void HandlePlayerMovement()

@@ -21,18 +21,19 @@ public class SpawnManager : MonoBehaviour
         playerTransform = Player.Instance.transform;
 
         currentSpawnTimer = Random.Range(spawnTimerMin, spawnTimeMax);
-
-        SpawnPrefab();
     }
 
     private void Update()
     {
-        currentSpawnTimer = Mathf.Max(currentSpawnTimer -= Time.deltaTime, 0f);
-
-        if (currentSpawnTimer <= 0f)
+        if (GameManager.Instance.IsGamePlaying())
         {
-            SpawnPrefab();
-            currentSpawnTimer = Random.Range(spawnTimerMin, spawnTimeMax);
+            currentSpawnTimer = Mathf.Max(currentSpawnTimer -= Time.deltaTime, 0f);
+
+            if (currentSpawnTimer <= 0f)
+            {
+                SpawnPrefab();
+                currentSpawnTimer = Random.Range(spawnTimerMin, spawnTimeMax);
+            }
         }
     }
 
