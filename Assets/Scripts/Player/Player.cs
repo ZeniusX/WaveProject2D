@@ -13,18 +13,19 @@ public class Player : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Transform currentPlayerWeapon;
-    [SerializeField] private Damageable damageable;
 
     [Space]
     [SerializeField] private LayerMask targetMask;
 
     private Rigidbody2D playerRb;
+    private Damageable damageable;
 
     private void Awake()
     {
         Instance = this;
 
         playerRb = GetComponent<Rigidbody2D>();
+        damageable = GetComponent<Damageable>();
     }
 
     private void Start()
@@ -57,7 +58,6 @@ public class Player : MonoBehaviour
     public void SetCurrentPlayerWeapon(WeaponTypeSO weaponTypeSO)
     {
         Transform playerWeapon = currentPlayerWeapon;
-
         Transform newWeaponTransform = Instantiate(weaponTypeSO.weaponGameObject.transform, transform);
 
         currentPlayerWeapon = newWeaponTransform;
