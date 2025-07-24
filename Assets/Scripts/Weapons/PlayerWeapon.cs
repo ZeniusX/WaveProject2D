@@ -57,7 +57,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     {
         fireCooldown = Mathf.Max(fireCooldown - Time.deltaTime, 0f);
 
-        if (isShooting)
+        if (isShooting && GameManager.Instance.IsGamePlaying())
         {
             Shoot();
         }
