@@ -4,6 +4,7 @@ using UnityEngine;
 public class Damageable : MonoBehaviour, IDamageable
 {
     public event EventHandler OnDamageTaken;
+    public event EventHandler OnDeath;
 
     [SerializeField] private int maxHealth = 10;
 
@@ -42,6 +43,7 @@ public class Damageable : MonoBehaviour, IDamageable
     public void Die()
     {
         isDead = true;
+        OnDeath?.Invoke(this, EventArgs.Empty);
         Destroy(gameObject);
     }
 }

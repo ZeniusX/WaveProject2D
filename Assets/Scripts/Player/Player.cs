@@ -13,11 +13,11 @@ public class Player : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Transform currentPlayerWeapon;
+    [SerializeField] private Damageable damageable;
 
     [Space]
     [SerializeField] private LayerMask targetMask;
 
-    private Transform firePoint;
     private Rigidbody2D playerRb;
 
     private void Awake()
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        firePoint = currentPlayerWeapon.gameObject.GetComponent<PlayerWeapon>().GetWeaponFirePoint();
+        damageable.OnDeath += Damageable_OnDeath;
     }
 
     private void FixedUpdate()
@@ -54,8 +54,6 @@ public class Player : MonoBehaviour
         playerRb.MoveRotation(Mathf.LerpAngle(playerRb.rotation, angle, Time.fixedDeltaTime * rotateSpeed));
     }
 
-
-
     public void SetCurrentPlayerWeapon(WeaponTypeSO weaponTypeSO)
     {
         Transform playerWeapon = currentPlayerWeapon;
@@ -63,12 +61,13 @@ public class Player : MonoBehaviour
         Transform newWeaponTransform = Instantiate(weaponTypeSO.weaponGameObject.transform, transform);
 
         currentPlayerWeapon = newWeaponTransform;
-        firePoint = newWeaponTransform.GetComponent<PlayerWeapon>().GetWeaponFirePoint();
 
         Destroy(playerWeapon.gameObject);
 
         OnCurrentWeaponChange?.Invoke(this, EventArgs.Empty);
     }
+
+    private void Damageable_OnDeath(object sender, EventArgs e) => GameManager.Instance.SetGameOver();
 
     public WeaponTypeSO GetCurrentPlayerWeaponTypeSO()
         => GetCurrentPlayerWeapon().GetComponent<PlayerWeapon>().GetWeaponTypeSO();
