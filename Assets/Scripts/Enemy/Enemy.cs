@@ -5,11 +5,9 @@ public class Enemy : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotateSpeed = 5f;
-    [SerializeField] private float distanceNeeded = 5f;
 
-    [Header("References")]
+    private float surfaceDistanceNeeded = 0.015f;
     private Rigidbody2D enemyRb;
-
     private Transform target;
 
     private void Awake()
@@ -32,8 +30,8 @@ public class Enemy : MonoBehaviour
     {
         if (!CloseToTarget())
         {
-            Vector2 moveDir = target.transform.position - transform.position;
-            enemyRb.linearVelocity += moveSpeed * Time.fixedDeltaTime * moveDir.normalized;
+            Vector2 moveDir = (target.position - transform.position).normalized;
+            enemyRb.linearVelocity = moveSpeed * Time.fixedDeltaTime * moveDir;
         }
         else
         {
@@ -51,6 +49,24 @@ public class Enemy : MonoBehaviour
 
     private bool CloseToTarget()
     {
-        return Vector2.Distance(transform.position, target.transform.position) <= distanceNeeded;
+        ColliderDistance2D distance = Physics2D.Distance(transform.GetComponent<Collider2D>(), target.transform.GetComponent<Collider2D>());
+        return distance.distance < surfaceDistanceNeeded;
+    }
+
+    private void OnDrawGizmos()
+    {
+        var circle = GetComponent<CircleCollider2D>();
+        if (circle == null) return;
+
+        Vector2 center = circle.bounds.center;
+        Vector2 forward = transform.up;
+        float distanceOffset = circle.radius + 0.1f;
+
+        Vector2 projectedPoint = center + forward * distanceOffset * 2f;
+        Vector2 surfacePoint = circle.ClosestPoint(projectedPoint);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(surfacePoint, surfaceDistanceNeeded);
+        Gizmos.DrawLine(center, surfacePoint);
     }
 }
