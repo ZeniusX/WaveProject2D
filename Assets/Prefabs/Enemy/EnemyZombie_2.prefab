@@ -152,7 +152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 25
   rotateSpeed: 2
-  surfaceDistanceNeeded: 0
+  obstacleCheckDistance: 1
+  movementCollisionMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &257723454426013299
 MonoBehaviour:
   m_ObjectHideFlags: 0
