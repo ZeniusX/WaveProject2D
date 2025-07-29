@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public float GetCountdownToStartTimer() => countdownToStartTimer;
 
-    public float GetGamePlayingCounter() => gamePlayingTimer;
+    public float GetGamePlayingTimer() => gamePlayingTimer;
 
     public bool IsGamePaused() => isGamePaused;
 
