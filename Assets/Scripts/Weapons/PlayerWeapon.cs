@@ -65,43 +65,46 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
     private void Shoot()
     {
-        if (!GameManager.Instance.IsGamePaused() && fireCooldown <= 0f && weaponData.currentAmmoCount > 0 && !isReloading)
+        if (!isReloading)
         {
-            for (int i = 0; i < weaponTypeSO.weaponSettings.bulletsPerShot; i++)
+            if (!GameManager.Instance.IsGamePaused() && fireCooldown <= 0f && weaponData.currentAmmoCount > 0)
             {
-                Transform bulletTransform = WeaponManager.Instance.GetAvailableBullet();
+                for (int i = 0; i < weaponTypeSO.weaponSettings.bulletsPerShot; i++)
+                {
+                    Transform bulletTransform = WeaponManager.Instance.GetAvailableBullet();
 
-                bulletTransform.SetPositionAndRotation(weaponFirePoint.position, weaponFirePoint.rotation);
+                    bulletTransform.SetPositionAndRotation(weaponFirePoint.position, weaponFirePoint.rotation);
 
-                Bullet bullet = bulletTransform.GetComponent<Bullet>();
-                bullet.FireBullet(weaponTypeSO.bulletSettings, Player.Instance.GetTargetMask());
+                    Bullet bullet = bulletTransform.GetComponent<Bullet>();
+                    bullet.FireBullet(weaponTypeSO.bulletSettings, Player.Instance.GetTargetMask());
+                }
+
+                SoundManager.Instance.PlaySound
+                (
+                    weaponTypeSO.weaponSettings.audioClipList
+                    [
+                        UnityEngine.Random.Range
+                        (
+                            0, weaponTypeSO.weaponSettings.audioClipList.Count
+                        )
+                    ],
+                    weaponFirePoint.position,
+                    weaponTypeSO.weaponSettings.audioVolume
+                );
+
+                weaponData.currentAmmoCount--;
+
+                WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
+
+                fireCooldown = weaponTypeSO.weaponSettings.fireRate;
+
+                OnWeaponShoot?.Invoke(this, EventArgs.Empty);
             }
-
-            SoundManager.Instance.PlaySound
-            (
-                weaponTypeSO.weaponSettings.audioClipList
-                [
-                    UnityEngine.Random.Range
-                    (
-                        0, weaponTypeSO.weaponSettings.audioClipList.Count
-                    )
-                ],
-                weaponFirePoint.position,
-                weaponTypeSO.weaponSettings.audioVolume
-            );
-
-            weaponData.currentAmmoCount--;
-
-            WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
-
-            fireCooldown = weaponTypeSO.weaponSettings.fireRate;
 
             if (OptionsManager.Instance.GetAutoReloadState() && weaponData.currentAmmoCount == 0)
             {
                 StartCoroutine(ReloadCurrentWeapon());
             }
-
-            OnWeaponShoot?.Invoke(this, EventArgs.Empty);
         }
     }
 

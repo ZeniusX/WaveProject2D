@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -42,6 +43,7 @@ public class SpawnManager : MonoBehaviour
         Vector2 randomOffset = Random.insideUnitCircle.normalized * Random.Range(spawnRadiusMin, spawnRadiusMax);
         Vector2 spawnPos = (Vector2)transform.position + randomOffset;
 
-        Instantiate(spawnPrefabs[Random.Range(0, spawnPrefabs.Count)], spawnPos, Quaternion.identity);
+        Transform spawnedPrefab = Instantiate(spawnPrefabs[Random.Range(0, spawnPrefabs.Count)], spawnPos, Quaternion.identity);
+        spawnedPrefab.GetComponent<AIDestinationSetter>().target = playerTransform;
     }
 }

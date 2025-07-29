@@ -63,23 +63,25 @@ public class Bullet : MonoBehaviour
         this.hitMask = hitMask;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (((1 << other.gameObject.layer) & hitMask) != 0)
-        {
-            if (other.TryGetComponent(out IDamageable component))
-            {
-                component.TakeDamage
-                (
-                    new DamageProfile
-                    {
-                        damageTaken = bulletSettings.bulletDamage,
-                        knockBackPower = bulletSettings.knockBackPower,
-                    }
-                );
+        if (((1 << other.gameObject.layer) & hitMask) == 0) return;
 
-                HideObject(bloodImpactPrefab);
-            }
+        if (other.gameObject.TryGetComponent(out IDamageable damageable))
+        {
+            var damage = new DamageProfile
+            {
+                damageTaken = bulletSettings.bulletDamage,
+                knockBackPower = bulletSettings.knockBackPower
+            };
+
+            damageable.TakeDamage(damage);
+
+            HideObject(bloodImpactPrefab);
+        }
+        else
+        {
+            HideObject(bulletImpactPrefab);
         }
     }
 }

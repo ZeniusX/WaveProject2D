@@ -60,14 +60,17 @@ public class Player : MonoBehaviour
 
     public void SetCurrentPlayerWeapon(WeaponTypeSO weaponTypeSO)
     {
-        Transform playerWeapon = currentPlayerWeapon;
-        Transform newWeaponTransform = Instantiate(weaponTypeSO.weaponGameObject.transform, transform);
+        if (currentPlayerWeapon.GetComponent<PlayerWeapon>().GetWeaponTypeSO().weaponType != weaponTypeSO.weaponType)
+        {
+            Transform playerWeapon = currentPlayerWeapon;
+            Transform newWeaponTransform = Instantiate(weaponTypeSO.weaponGameObject.transform, transform);
 
-        currentPlayerWeapon = newWeaponTransform;
+            currentPlayerWeapon = newWeaponTransform;
 
-        Destroy(playerWeapon.gameObject);
+            Destroy(playerWeapon.gameObject);
 
-        OnCurrentWeaponChange?.Invoke(this, EventArgs.Empty);
+            OnCurrentWeaponChange?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void Damageable_OnDeath(object sender, EventArgs e) => GameManager.Instance.SetGameOver();
