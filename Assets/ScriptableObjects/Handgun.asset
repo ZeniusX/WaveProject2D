@@ -18,7 +18,9 @@ MonoBehaviour:
   weaponSettings:
     fireRate: 0.35
     reloadTime: 0.5
-    ammoCount: 12
+    fullRepairAmount: 100
+    shootingWear: 0.5
+    fullMagazineAmmoCount: 12
     bulletsPerShot: 1
     audioVolume: 1
     audioClipList:

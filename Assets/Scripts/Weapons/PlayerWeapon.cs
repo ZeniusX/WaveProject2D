@@ -34,7 +34,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         {
             WeaponManager.Instance.AddWeaponData(weaponTypeSO.weaponType, new WeaponManager.WeaponData
             {
-                currentAmmoCount = weaponTypeSO.weaponSettings.ammoCount
+                currentMagazineAmmoCount = weaponTypeSO.weaponSettings.fullMagazineAmmoCount
             });
             weaponData = WeaponManager.Instance.GetWeaponData(weaponTypeSO.weaponType);
         }
@@ -42,7 +42,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
     private void GameInput_OnReloadPerformed(object sender, EventArgs e)
     {
-        if (!isReloading && weaponData.currentAmmoCount != weaponTypeSO.weaponSettings.ammoCount)
+        if (!isReloading && weaponData.currentMagazineAmmoCount != weaponTypeSO.weaponSettings.fullMagazineAmmoCount)
         {
             StartCoroutine(ReloadCurrentWeapon());
         }
@@ -67,7 +67,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
     {
         if (!isReloading)
         {
-            if (!GameManager.Instance.IsGamePaused() && fireCooldown <= 0f && weaponData.currentAmmoCount > 0)
+            if (!GameManager.Instance.IsGamePaused() && fireCooldown <= 0f && weaponData.currentMagazineAmmoCount > 0)
             {
                 for (int i = 0; i < weaponTypeSO.weaponSettings.bulletsPerShot; i++)
                 {
@@ -92,7 +92,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
                     weaponTypeSO.weaponSettings.audioVolume
                 );
 
-                weaponData.currentAmmoCount--;
+                weaponData.currentMagazineAmmoCount--;
 
                 WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
 
@@ -101,7 +101,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
                 OnWeaponShoot?.Invoke(this, EventArgs.Empty);
             }
 
-            if (OptionsManager.Instance.GetAutoReloadState() && weaponData.currentAmmoCount == 0)
+            if (OptionsManager.Instance.GetAutoReloadState() && weaponData.currentMagazineAmmoCount == 0)
             {
                 StartCoroutine(ReloadCurrentWeapon());
             }
@@ -124,7 +124,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         }
         reloadTimer = 0f;
 
-        weaponData.currentAmmoCount = weaponTypeSO.weaponSettings.ammoCount;
+        weaponData.currentMagazineAmmoCount = weaponTypeSO.weaponSettings.fullMagazineAmmoCount;
 
         WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
 

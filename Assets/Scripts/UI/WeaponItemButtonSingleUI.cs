@@ -31,7 +31,7 @@ public class WeaponItemButtonSingleUI : MonoBehaviour
         weaponName.text = weaponType.weaponName;
 
         SetSelected();
-        SetAmmoCount(weaponType.weaponSettings.ammoCount, weaponType.weaponSettings.ammoCount);
+        SetAmmoCount(weaponType.weaponSettings.fullMagazineAmmoCount, weaponType.weaponSettings.fullMagazineAmmoCount);
     }
 
     private void WeaponManager_OnWeaponDataDictionaryChange(object sender, EventArgs e)
@@ -40,8 +40,8 @@ public class WeaponItemButtonSingleUI : MonoBehaviour
         {
             SetAmmoCount
             (
-                WeaponManager.Instance.GetWeaponData(weaponType.weaponType).currentAmmoCount,
-                weaponType.weaponSettings.ammoCount
+                WeaponManager.Instance.GetWeaponData(weaponType.weaponType).currentMagazineAmmoCount,
+                weaponType.weaponSettings.fullMagazineAmmoCount
             );
         }
     }
