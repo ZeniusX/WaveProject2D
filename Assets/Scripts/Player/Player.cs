@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -46,7 +47,18 @@ public class Player : MonoBehaviour
     {
         Vector2 moveDir = GameInput.Instance.GetMovementInputNormalized();
 
-        playerRb.MovePosition(playerRb.position + moveSpeed * Time.fixedDeltaTime * moveDir);
+        bool isMoving = false;
+
+        if (moveDir.magnitude > 0.1)
+        {
+            isMoving = true;
+        }
+
+        if (isMoving)
+        {
+            playerRb.MovePosition(playerRb.position + moveSpeed * Time.fixedDeltaTime * moveDir);
+        }
+
     }
 
     private void HandlePlayerRotation()

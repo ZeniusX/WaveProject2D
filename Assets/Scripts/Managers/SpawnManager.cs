@@ -44,6 +44,6 @@ public class SpawnManager : MonoBehaviour
         Vector2 spawnPos = (Vector2)transform.position + randomOffset;
 
         Transform spawnedPrefab = Instantiate(spawnPrefabs[Random.Range(0, spawnPrefabs.Count)], spawnPos, Quaternion.identity);
-        spawnedPrefab.GetComponent<AIDestinationSetter>().target = playerTransform;
+        spawnedPrefab.GetComponent<EnemyAI>().SetTarget(playerTransform);
     }
 }

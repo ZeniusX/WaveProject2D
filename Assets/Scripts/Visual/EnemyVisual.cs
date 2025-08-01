@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyVisual : MonoBehaviour
 {
     private const string ENEMY_HIT = "Hit";
+    private const string ENEMY_ATTACK = "Attack";
 
     [SerializeField] private EnemyAI enemyAI;
     [SerializeField] private Damageable damageable;
@@ -29,6 +30,11 @@ public class EnemyVisual : MonoBehaviour
 
     private void EnemyAI_OnEnemyAttack(object sender, EventArgs e)
     {
-        Debug.Log("Attack Visual");
+        animator.SetTrigger(ENEMY_ATTACK);
+    }
+
+    public void OnAnimationHit()
+    {
+        enemyAI.AttackTargetBox();
     }
 }
