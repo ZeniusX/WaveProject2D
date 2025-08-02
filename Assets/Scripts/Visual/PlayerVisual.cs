@@ -21,7 +21,7 @@ public class PlayerVisual : MonoBehaviour
         originalColor = sprite.color;
 
         damageable = Player.Instance.GetComponent<Damageable>();
-        damageable.OnDamageTaken += Damageable_OnDamageTaken;
+        damageable.OnHealthChanged += Damageable_OnHealthChanged;
     }
 
     private IEnumerator PlayerHit()
@@ -42,7 +42,7 @@ public class PlayerVisual : MonoBehaviour
         isFlashing = false;
     }
 
-    private void Damageable_OnDamageTaken(object sender, EventArgs e) => StartCoroutine(PlayerHit());
+    private void Damageable_OnHealthChanged(object sender, EventArgs e) => StartCoroutine(PlayerHit());
 
-    private void OnDestroy() => damageable.OnDamageTaken -= Damageable_OnDamageTaken;
+    private void OnDestroy() => damageable.OnHealthChanged -= Damageable_OnHealthChanged;
 }

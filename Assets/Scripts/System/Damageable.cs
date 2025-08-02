@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 
 public class Damageable : MonoBehaviour, IDamageable
 {
-    public event EventHandler OnDamageTaken;
+    public event EventHandler OnHealthChanged;
     public event EventHandler OnDeath;
 
     [SerializeField] private int maxHealth = 10;
@@ -29,7 +30,7 @@ public class Damageable : MonoBehaviour, IDamageable
             Die();
         }
 
-        OnDamageTaken?.Invoke(this, EventArgs.Empty);
+        OnHealthChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void KnockBack(float knockBackPower, Vector2 damagePosition)
@@ -46,4 +47,8 @@ public class Damageable : MonoBehaviour, IDamageable
         OnDeath?.Invoke(this, EventArgs.Empty);
         Destroy(gameObject);
     }
+
+    public int GetMaxHealth() => maxHealth;
+
+    public int GetCurrentHealth() => currentHealth;
 }

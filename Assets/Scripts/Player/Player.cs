@@ -93,4 +93,6 @@ public class Player : MonoBehaviour
     public Transform GetCurrentPlayerWeapon() => currentPlayerWeapon;
 
     public LayerMask GetTargetMask() => targetMask;
+
+    public Damageable GetPlayerDamageable() => damageable;
 }

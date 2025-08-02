@@ -20,10 +20,10 @@ public class EnemyVisual : MonoBehaviour
 
     private void Start()
     {
-        damageable.OnDamageTaken += Damageable_OnDamageTaken;
+        damageable.OnHealthChanged += Damageable_OnHealthChanged;
         enemyAI.OnEnemyAttack += EnemyAI_OnEnemyAttack;
     }
-    private void Damageable_OnDamageTaken(object sender, EventArgs e)
+    private void Damageable_OnHealthChanged(object sender, EventArgs e)
     {
         animator.SetTrigger(ENEMY_HIT);
     }
