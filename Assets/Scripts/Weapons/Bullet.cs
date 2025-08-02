@@ -69,13 +69,7 @@ public class Bullet : MonoBehaviour
 
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            var damage = new DamageProfile
-            {
-                damageTaken = bulletSettings.bulletDamage,
-                knockBackPower = bulletSettings.knockBackPower
-            };
-
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(bulletSettings.damageProfile, transform);
 
             HideObject(bloodImpactPrefab);
         }

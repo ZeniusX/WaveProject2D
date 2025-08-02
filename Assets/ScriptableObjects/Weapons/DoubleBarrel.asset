@@ -10,26 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 173bc8800858fac45972add59b420dbd, type: 3}
-  m_Name: SMG
+  m_Name: DoubleBarrel
   m_EditorClassIdentifier: 
-  weaponName: SMG
-  weaponGameObject: {fileID: 4993600469394424786, guid: 7ba335bd9795bc64b9efc0be084f8acb, type: 3}
-  weaponType: 3
+  weaponName: Double Barrel
+  weaponGameObject: {fileID: 4993600469394424786, guid: ac8d417ee0a98644f8736d38f917dda1, type: 3}
+  weaponType: 1
   weaponSettings:
-    fireRate: 0.15
-    reloadTime: 0.7
+    fireRate: 0.65
+    reloadTime: 2
     fullRepairAmount: 100
     shootingWear: 0.5
-    fullMagazineAmmoCount: 30
-    bulletsPerShot: 1
-    audioVolume: 0.5
+    fullMagazineAmmoCount: 2
+    bulletsPerShot: 7
+    audioVolume: 1
     audioClipList:
-    - {fileID: 8300000, guid: b2b4b26855926ae4eb4b07da7a3aff29, type: 3}
+    - {fileID: 8300000, guid: 7c2fbb80af6af7041b186959b4463296, type: 3}
   bulletSettings:
     bulletSpeedMin: 25
     bulletSpeedMax: 30
-    bulletLifeTimeMin: 0.25
-    bulletLifeTimeMax: 0.3
-    spreadAngle: 7
-    knockBackPower: 5
-    bulletDamage: 5
+    bulletLifeTimeMin: 0.2
+    bulletLifeTimeMax: 0.25
+    spreadAngle: 10
+    knockBackPower: 20
+    bulletDamage: 7
+    damageProfile:
+      damage: 7
+      knockBackPower: 20

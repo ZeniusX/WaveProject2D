@@ -9,8 +9,7 @@ public struct BulletSettings
     public float bulletLifeTimeMin;
     public float bulletLifeTimeMax;
     public float spreadAngle;
-    public float knockBackPower;
 
     [Space]
-    public int bulletDamage;
+    public DamageProfile damageProfile;
 }

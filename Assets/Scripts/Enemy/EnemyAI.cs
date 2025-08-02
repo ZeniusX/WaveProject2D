@@ -8,13 +8,16 @@ public class EnemyAI : MonoBehaviour
 {
     public event EventHandler OnEnemyAttack;
 
+    [Header("Attack Settings")]
     [SerializeField] private float attackCooldown = 1f;
-    [SerializeField] private Transform hitPoint;
+    [SerializeField] private float attackCircle;
     [SerializeField] private LayerMask targetMask;
-    [SerializeField] private Vector2 attackBox;
+    [SerializeField] private DamageProfile damageProfile;
 
-    [Space]
-    [SerializeField] private Transform target;
+    [Header("References")]
+    [SerializeField] private Transform hitPoint;
+
+    private Transform target;
     private AIPath enemyPath;
     private AIDestinationSetter enemyDestinationSetter;
     private bool isAttacking;
@@ -54,17 +57,13 @@ public class EnemyAI : MonoBehaviour
 
     public void AttackTargetBox()
     {
-        Collider2D[] targets = Physics2D.OverlapBoxAll(hitPoint.position, attackBox, 0f, targetMask);
+        Collider2D[] targets = Physics2D.OverlapCircleAll(hitPoint.position, attackCircle, targetMask);
 
         foreach (Collider2D target in targets)
         {
             if (!target.TryGetComponent(out Damageable damageable)) continue;
 
-            damageable.TakeDamage(new DamageProfile
-            {
-                damageTaken = 15,
-                knockBackPower = 20f
-            });
+            damageable.TakeDamage(damageProfile, transform);
         }
     }
 
@@ -76,6 +75,6 @@ public class EnemyAI : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(hitPoint.position, attackBox);
+        Gizmos.DrawWireSphere(hitPoint.position, attackCircle);
     }
 }

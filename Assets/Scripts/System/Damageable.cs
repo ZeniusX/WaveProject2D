@@ -16,13 +16,13 @@ public class Damageable : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(DamageProfile damageProfile)
+    public void TakeDamage(DamageProfile damageProfile, Transform damager)
     {
         if (isDead) return;
 
-        currentHealth = Mathf.Max(currentHealth -= damageProfile.damageTaken, 0);
+        currentHealth = Mathf.Max(currentHealth -= damageProfile.damage, 0);
 
-        KnockBack(damageProfile.knockBackPower);
+        KnockBack(damageProfile.knockBackPower, damager.up);
 
         if (currentHealth <= 0f)
         {
@@ -32,11 +32,11 @@ public class Damageable : MonoBehaviour, IDamageable
         OnDamageTaken?.Invoke(this, EventArgs.Empty);
     }
 
-    public void KnockBack(float knockBackPower)
+    public void KnockBack(float knockBackPower, Vector2 damagePosition)
     {
         if (TryGetComponent(out Rigidbody2D rigidbody2D))
         {
-            rigidbody2D.AddRelativeForce(Vector2.down * knockBackPower, ForceMode2D.Impulse);
+            rigidbody2D.AddForce(damagePosition * knockBackPower, ForceMode2D.Impulse);
         }
     }
 

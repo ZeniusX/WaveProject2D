@@ -1,5 +1,9 @@
+using System;
+using UnityEngine;
+
+[Serializable]
 public struct DamageProfile
 {
-    public int damageTaken;
+    public int damage;
     public float knockBackPower;
 }
