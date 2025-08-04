@@ -8,7 +8,7 @@ public class PlayerVisual : MonoBehaviour
 
     private SpriteRenderer sprite;
     private Color originalColor;
-    private Damageable damageable;
+    private Damageable playerDamageable;
     private bool isFlashing;
 
     private void Awake()
@@ -20,8 +20,8 @@ public class PlayerVisual : MonoBehaviour
     {
         originalColor = sprite.color;
 
-        damageable = Player.Instance.GetComponent<Damageable>();
-        damageable.OnHealthChanged += Damageable_OnHealthChanged;
+        playerDamageable = Player.Instance.GetComponent<Damageable>();
+        playerDamageable.OnHealthChanged += PlayerDamageable_OnHealthChanged;
     }
 
     private IEnumerator PlayerHit()
@@ -35,14 +35,21 @@ public class PlayerVisual : MonoBehaviour
 
         sprite.color = hitColor;
         yield return new WaitForSeconds(0.1f);
-        sprite.color = originalColor;
+
+        if (!playerDamageable.IsDead())
+        {
+            sprite.color = originalColor;
+        }
 
         transform.localScale = originalScale;
 
         isFlashing = false;
     }
 
-    private void Damageable_OnHealthChanged(object sender, EventArgs e) => StartCoroutine(PlayerHit());
+    private void PlayerDamageable_OnHealthChanged(object sender, EventArgs e) => StartCoroutine(PlayerHit());
 
-    private void OnDestroy() => damageable.OnHealthChanged -= Damageable_OnHealthChanged;
+    private void OnDestroy()
+    {
+        playerDamageable.OnHealthChanged -= PlayerDamageable_OnHealthChanged;
+    }
 }

@@ -32,9 +32,22 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        enemyDestinationSetter.target = target;
+        if (GameManager.Instance.IsGamePlaying())
+        {
+            enemyDestinationSetter.target = target;
+        }
 
         enemyDamageable.OnDeath += EnemyDamageable_OnDeath;
+
+        GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
+    }
+
+    private void GameManager_OnStateChanged(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.IsGameOver())
+        {
+            enemyPath.isStopped = true;
+        }
     }
 
     private void Update()

@@ -47,6 +47,8 @@ public class Damageable : MonoBehaviour, IDamageable
         OnDeath?.Invoke(this, EventArgs.Empty);
     }
 
+    public bool IsDead() => isDead;
+
     public int GetMaxHealth() => maxHealth;
 
     public int GetCurrentHealth() => currentHealth;

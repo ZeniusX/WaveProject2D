@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
     public event EventHandler OnCurrentWeaponChange;
-    public event EventHandler OnPlayerDeath;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -20,19 +19,19 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask targetMask;
 
     private Rigidbody2D playerRb;
-    private Damageable damageable;
+    private Damageable playerDamageable;
 
     private void Awake()
     {
         Instance = this;
 
         playerRb = GetComponent<Rigidbody2D>();
-        damageable = GetComponent<Damageable>();
+        playerDamageable = GetComponent<Damageable>();
     }
 
     private void Start()
     {
-        damageable.OnDeath += Damageable_OnDeath;
+        playerDamageable.OnDeath += Damageable_OnDeath;
     }
 
     private void FixedUpdate()
@@ -59,7 +58,6 @@ public class Player : MonoBehaviour
         {
             playerRb.MovePosition(playerRb.position + moveSpeed * Time.fixedDeltaTime * moveDir);
         }
-
     }
 
     private void HandlePlayerRotation()
@@ -73,6 +71,8 @@ public class Player : MonoBehaviour
 
     public void SetCurrentPlayerWeapon(WeaponTypeSO weaponTypeSO)
     {
+        if (playerDamageable.IsDead()) return;
+
         if (currentPlayerWeapon.GetComponent<PlayerWeapon>().GetWeaponTypeSO().weaponType != weaponTypeSO.weaponType)
         {
             Transform playerWeapon = currentPlayerWeapon;
@@ -89,8 +89,6 @@ public class Player : MonoBehaviour
     private void Damageable_OnDeath(object sender, EventArgs e)
     {
         GameManager.Instance.SetGameOver();
-        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
-        Destroy(gameObject);
     }
 
     public WeaponTypeSO GetCurrentPlayerWeaponTypeSO()
@@ -100,5 +98,5 @@ public class Player : MonoBehaviour
 
     public LayerMask GetTargetMask() => targetMask;
 
-    public Damageable GetPlayerDamageable() => damageable;
+    public Damageable GetPlayerDamageable() => playerDamageable;
 }
