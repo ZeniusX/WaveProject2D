@@ -46,12 +46,6 @@ public class WeaponItemButtonSingleUI : MonoBehaviour
         }
     }
 
-    private void SetAmmoCount(int currentAmmo, int maxAmmo) => weaponAmmoCount.text = $"{currentAmmo}/{maxAmmo}";
-
-    private void Player_OnCurrentWeaponChange(object sender, EventArgs e) => SetSelected();
-
-    public void SetPlayerWeapon() => Player.Instance.SetCurrentPlayerWeapon(weaponType);
-
     private void SetSelected()
     {
         WeaponTypeSO currentPlayerWeapon = Player.Instance.GetCurrentPlayerWeaponTypeSO();
@@ -65,4 +59,10 @@ public class WeaponItemButtonSingleUI : MonoBehaviour
             selected.gameObject.SetActive(false);
         }
     }
+
+    private void SetAmmoCount(int currentAmmo, int maxAmmo) => weaponAmmoCount.text = $"{currentAmmo}/{maxAmmo}";
+
+    private void Player_OnCurrentWeaponChange(object sender, EventArgs e) => SetSelected();
+
+    public void SetPlayerWeapon() => Player.Instance.SetCurrentPlayerWeapon(weaponType);
 }

@@ -45,7 +45,6 @@ public class Damageable : MonoBehaviour, IDamageable
     {
         isDead = true;
         OnDeath?.Invoke(this, EventArgs.Empty);
-        Destroy(gameObject);
     }
 
     public int GetMaxHealth() => maxHealth;

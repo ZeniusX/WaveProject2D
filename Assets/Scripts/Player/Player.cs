@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
     public event EventHandler OnCurrentWeaponChange;
+    public event EventHandler OnPlayerDeath;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -85,7 +86,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Damageable_OnDeath(object sender, EventArgs e) => GameManager.Instance.SetGameOver();
+    private void Damageable_OnDeath(object sender, EventArgs e)
+    {
+        GameManager.Instance.SetGameOver();
+        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+        Destroy(gameObject);
+    }
 
     public WeaponTypeSO GetCurrentPlayerWeaponTypeSO()
         => GetCurrentPlayerWeapon().GetComponent<PlayerWeapon>().GetWeaponTypeSO();

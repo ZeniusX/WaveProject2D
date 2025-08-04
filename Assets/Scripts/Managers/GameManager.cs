@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     private GameState gameState = GameState.WaitingToStart;
     private bool isGamePaused;
     private float countdownToStartTimer = 5f;
-    private float gamePlayingTimer = default;
+    private float gamePlayingTimer;
+    private int enemiesKilled;
 
     private void Awake()
     {
@@ -82,6 +83,8 @@ public class GameManager : MonoBehaviour
         OnStateChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    public void AddEnemyKilled() => enemiesKilled++;
+
     private void GameInput_OnPausePerformed(object sender, EventArgs e) => TogglePauseGame();
 
     public float GetCountdownToStartTimer() => countdownToStartTimer;
@@ -97,4 +100,6 @@ public class GameManager : MonoBehaviour
     public bool IsGamePlaying() => gameState == GameState.GamePlaying;
 
     public bool IsGameOver() => gameState == GameState.GameOver;
+
+    public int GetEnemiesKilled() => enemiesKilled;
 }

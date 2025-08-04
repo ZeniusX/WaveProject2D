@@ -46,6 +46,5 @@ public class HealthBarUI : MonoBehaviour
     private void PlayerDamageable_OnHealthChanged(object sender, EventArgs e) => SetHealthBarUI();
 
     private void Show() => gameObject.SetActive(true);
-
     private void Hide() => gameObject.SetActive(false);
 }

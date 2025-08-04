@@ -21,16 +21,20 @@ public class EnemyAI : MonoBehaviour
     private AIPath enemyPath;
     private AIDestinationSetter enemyDestinationSetter;
     private bool isAttacking;
+    private Damageable enemyDamageable;
 
     private void Awake()
     {
         enemyPath = GetComponent<AIPath>();
         enemyDestinationSetter = GetComponent<AIDestinationSetter>();
+        enemyDamageable = GetComponent<Damageable>();
     }
 
     private void Start()
     {
         enemyDestinationSetter.target = target;
+
+        enemyDamageable.OnDeath += EnemyDamageable_OnDeath;
     }
 
     private void Update()
@@ -67,14 +71,17 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void SetTarget(Transform target)
-    {
-        this.target = target;
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(hitPoint.position, attackCircle);
+    }
+
+    public void SetTarget(Transform target) => this.target = target;
+
+    private void EnemyDamageable_OnDeath(object sender, EventArgs e)
+    {
+        GameManager.Instance.AddEnemyKilled();
+        Destroy(gameObject);
     }
 }
