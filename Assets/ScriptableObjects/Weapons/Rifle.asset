@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: 
   weaponName: Rifle
+  weaponSprite: {fileID: -9057444008558310320, guid: 50d093f0be31f8d468df18d3a078897e, type: 3}
+  weaponAmmoSprite: {fileID: 6284509973131905936, guid: a740a7d0b58ed5d4d984ec0391dce9cc, type: 3}
   weaponGameObject: {fileID: 4993600469394424786, guid: 3e608b604be1d6e4685ba8c96ad17935, type: 3}
   weaponType: 2
   weaponSettings:
@@ -25,14 +27,13 @@ MonoBehaviour:
     audioVolume: 0.7
     audioClipList:
     - {fileID: 8300000, guid: 3e99c8a4f01281b40ac6ae32b20d4b9f, type: 3}
+    isAmmoInfinite: 0
   bulletSettings:
     bulletSpeedMin: 25
     bulletSpeedMax: 30
     bulletLifeTimeMin: 0.45
     bulletLifeTimeMax: 0.5
     spreadAngle: 3
-    knockBackPower: 10
-    bulletDamage: 10
     damageProfile:
       damage: 10
       knockBackPower: 10

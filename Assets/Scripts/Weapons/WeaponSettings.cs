@@ -17,4 +17,7 @@ public struct WeaponSettings
     [Space]
     public float audioVolume;
     public List<AudioClip> audioClipList;
+
+    [Space]
+    public bool isAmmoInfinite;
 }

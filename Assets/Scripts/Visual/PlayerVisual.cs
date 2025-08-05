@@ -48,8 +48,5 @@ public class PlayerVisual : MonoBehaviour
 
     private void PlayerDamageable_OnHealthChanged(object sender, EventArgs e) => StartCoroutine(PlayerHit());
 
-    private void OnDestroy()
-    {
-        playerDamageable.OnHealthChanged -= PlayerDamageable_OnHealthChanged;
-    }
+    private void OnDestroy() => playerDamageable.OnHealthChanged -= PlayerDamageable_OnHealthChanged;
 }

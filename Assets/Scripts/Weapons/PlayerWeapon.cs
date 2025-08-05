@@ -32,11 +32,22 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         }
         else
         {
-            WeaponManager.Instance.AddWeaponData(weaponTypeSO.weaponType, new WeaponManager.WeaponData
+            WeaponManager.WeaponData addedWeaponData = new WeaponManager.WeaponData
             {
-                currentMagazineAmmoCount = weaponTypeSO.weaponSettings.fullMagazineAmmoCount
-            });
+                currentMagazineAmmoCount =
+                    weaponTypeSO.weaponSettings.isAmmoInfinite ? weaponTypeSO.weaponSettings.fullMagazineAmmoCount : 0,
+
+                totalAmmoCount =
+                    weaponTypeSO.weaponSettings.isAmmoInfinite ? int.MaxValue : 0
+            };
+
+            WeaponManager.Instance.AddWeaponData(weaponTypeSO.weaponType, addedWeaponData);
             weaponData = WeaponManager.Instance.GetWeaponData(weaponTypeSO.weaponType);
+        }
+
+        if (Player.Instance.GetCurrentPlayerWeaponTypeSO() != weaponTypeSO)
+        {
+            DestroyWeapon();
         }
     }
 
@@ -110,6 +121,8 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
     private IEnumerator ReloadCurrentWeapon()
     {
+        if (WeaponManager.Instance.GetWeaponData(weaponTypeSO.weaponType).totalAmmoCount <= 0) yield break;
+
         isReloading = true;
 
         reloadTimer = weaponTypeSO.weaponSettings.reloadTime;
@@ -124,11 +137,20 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         }
         reloadTimer = 0f;
 
-        weaponData.currentMagazineAmmoCount = weaponTypeSO.weaponSettings.fullMagazineAmmoCount;
+        int spaceLeft = weaponTypeSO.weaponSettings.fullMagazineAmmoCount - weaponData.currentMagazineAmmoCount;
+        int bulletsToReload = Mathf.Min(spaceLeft, weaponData.totalAmmoCount);
+
+        weaponData.currentMagazineAmmoCount += bulletsToReload;
+        weaponData.totalAmmoCount -= bulletsToReload;
 
         WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
 
         isReloading = false;
+    }
+
+    public void DestroyWeapon()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDestroy()

@@ -12,7 +12,6 @@ public class WeaponManager : MonoBehaviour
     {
         public int currentMagazineAmmoCount;
         public int totalAmmoCount;
-        public float currentWear;
     }
 
     public enum WeaponType

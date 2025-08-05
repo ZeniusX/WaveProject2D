@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
 
             currentPlayerWeapon = newWeaponTransform;
 
-            Destroy(playerWeapon.gameObject);
+            playerWeapon.GetComponent<PlayerWeapon>().DestroyWeapon();
 
             OnCurrentWeaponChange?.Invoke(this, EventArgs.Empty);
         }

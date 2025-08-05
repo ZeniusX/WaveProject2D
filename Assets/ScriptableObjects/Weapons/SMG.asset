@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: SMG
   m_EditorClassIdentifier: 
   weaponName: SMG
+  weaponSprite: {fileID: 2562568060712908168, guid: 7001a0f4015c82745a313516b7556871, type: 3}
+  weaponAmmoSprite: {fileID: -462813027875958033, guid: 5d02cbe85234de74ca2e6e6fe687d204, type: 3}
   weaponGameObject: {fileID: 4993600469394424786, guid: 7ba335bd9795bc64b9efc0be084f8acb, type: 3}
   weaponType: 3
   weaponSettings:
@@ -25,14 +27,13 @@ MonoBehaviour:
     audioVolume: 0.5
     audioClipList:
     - {fileID: 8300000, guid: b2b4b26855926ae4eb4b07da7a3aff29, type: 3}
+    isAmmoInfinite: 0
   bulletSettings:
     bulletSpeedMin: 25
     bulletSpeedMax: 30
     bulletLifeTimeMin: 0.25
     bulletLifeTimeMax: 0.3
     spreadAngle: 7
-    knockBackPower: 5
-    bulletDamage: 5
     damageProfile:
       damage: 5
       knockBackPower: 5

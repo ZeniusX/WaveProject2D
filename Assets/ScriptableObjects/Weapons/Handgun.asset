@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Handgun
   m_EditorClassIdentifier: 
   weaponName: Handgun
+  weaponSprite: {fileID: 4045322650220621105, guid: eb8785295d851c2488350960606dcfb9, type: 3}
+  weaponAmmoSprite: {fileID: -462813027875958033, guid: 5d02cbe85234de74ca2e6e6fe687d204, type: 3}
   weaponGameObject: {fileID: 4993600469394424786, guid: 9b288922dd0c4ac458037df9d03d58cd, type: 3}
   weaponType: 0
   weaponSettings:
@@ -25,14 +27,13 @@ MonoBehaviour:
     audioVolume: 1
     audioClipList:
     - {fileID: 8300000, guid: c432086aa18935c478bae199546652a2, type: 3}
+    isAmmoInfinite: 1
   bulletSettings:
     bulletSpeedMin: 25
     bulletSpeedMax: 30
     bulletLifeTimeMin: 0.3
     bulletLifeTimeMax: 0.35
     spreadAngle: 5
-    knockBackPower: 2
-    bulletDamage: 5
     damageProfile:
       damage: 5
       knockBackPower: 2

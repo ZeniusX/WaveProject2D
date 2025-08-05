@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: DoubleBarrel
   m_EditorClassIdentifier: 
   weaponName: Double Barrel
+  weaponSprite: {fileID: 2274365964460966061, guid: 56c0009bde8eeb5468231c89a970ecb8, type: 3}
+  weaponAmmoSprite: {fileID: -8255768696348216164, guid: 64ef3a3623306a24fbac9d77477640e3, type: 3}
   weaponGameObject: {fileID: 4993600469394424786, guid: ac8d417ee0a98644f8736d38f917dda1, type: 3}
   weaponType: 1
   weaponSettings:
@@ -25,14 +27,13 @@ MonoBehaviour:
     audioVolume: 1
     audioClipList:
     - {fileID: 8300000, guid: 7c2fbb80af6af7041b186959b4463296, type: 3}
+    isAmmoInfinite: 0
   bulletSettings:
     bulletSpeedMin: 25
     bulletSpeedMax: 30
     bulletLifeTimeMin: 0.2
     bulletLifeTimeMax: 0.25
     spreadAngle: 10
-    knockBackPower: 20
-    bulletDamage: 7
     damageProfile:
       damage: 7
       knockBackPower: 20

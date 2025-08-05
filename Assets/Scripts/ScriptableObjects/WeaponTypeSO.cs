@@ -4,6 +4,8 @@ using UnityEngine;
 public class WeaponTypeSO : ScriptableObject
 {
     public string weaponName;
+    public Sprite weaponSprite;
+    public Sprite weaponAmmoSprite;
     public GameObject weaponGameObject;
     public WeaponManager.WeaponType weaponType;
 
