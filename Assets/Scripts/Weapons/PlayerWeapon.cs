@@ -38,7 +38,9 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
                     weaponTypeSO.weaponSettings.isAmmoInfinite ? weaponTypeSO.weaponSettings.fullMagazineAmmoCount : 0,
 
                 totalAmmoCount =
-                    weaponTypeSO.weaponSettings.isAmmoInfinite ? int.MaxValue : 0
+                    weaponTypeSO.weaponSettings.isAmmoInfinite ? int.MaxValue : 0,
+
+                weaponTypeSO = weaponTypeSO
             };
 
             WeaponManager.Instance.AddWeaponData(weaponTypeSO.weaponType, addedWeaponData);
@@ -159,7 +161,7 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
         GameInput.Instance.OnReloadPerformed -= GameInput_OnReloadPerformed;
     }
 
-    public Transform GetWeaponFirePoint() => weaponFirePoint;
+    // public Transform GetWeaponFirePoint() => weaponFirePoint;
 
     public WeaponTypeSO GetWeaponTypeSO() => weaponTypeSO;
 }

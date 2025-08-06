@@ -91,8 +91,7 @@ public class Player : MonoBehaviour
         GameManager.Instance.SetGameOver();
     }
 
-    public WeaponTypeSO GetCurrentPlayerWeaponTypeSO()
-        => GetCurrentPlayerWeapon().GetComponent<PlayerWeapon>().GetWeaponTypeSO();
+    public WeaponTypeSO GetCurrentPlayerWeaponTypeSO() => GetCurrentPlayerWeapon().GetComponent<PlayerWeapon>().GetWeaponTypeSO();
 
     public Transform GetCurrentPlayerWeapon() => currentPlayerWeapon;
 

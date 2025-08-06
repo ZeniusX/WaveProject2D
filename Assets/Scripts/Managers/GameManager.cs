@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     private float gamePlayingTimer;
     private int enemiesKilled;
 
+    [SerializeField] private bool DebugMode;
+
     private void Awake()
     {
         Instance = this;
@@ -102,4 +104,6 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver() => gameState == GameState.GameOver;
 
     public int GetEnemiesKilled() => enemiesKilled;
+
+    public bool IsDebugMode() => DebugMode;
 }
