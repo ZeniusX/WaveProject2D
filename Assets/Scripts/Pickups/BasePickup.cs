@@ -29,11 +29,11 @@ public abstract class BasePickup : MonoBehaviour
         if (((1 << collision.gameObject.layer) & collectionMask) == 0) return;
 
         PickUp();
-
-        Destroy(gameObject);
     }
 
     protected abstract void PickUp();
 
     protected abstract void Setup();
+
+    protected abstract void DestroyPickUp();
 }

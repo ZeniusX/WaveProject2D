@@ -39,8 +39,6 @@ public class PlayerWeapon : MonoBehaviour, IHasProgress
 
                 totalAmmoCount =
                     weaponTypeSO.weaponSettings.isAmmoInfinite ? int.MaxValue : 0,
-
-                weaponTypeSO = weaponTypeSO
             };
 
             WeaponManager.Instance.AddWeaponData(weaponTypeSO.weaponType, addedWeaponData);

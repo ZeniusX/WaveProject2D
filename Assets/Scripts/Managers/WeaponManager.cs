@@ -12,7 +12,7 @@ public class WeaponManager : MonoBehaviour
     {
         public int currentMagazineAmmoCount;
         public int totalAmmoCount;
-        public WeaponTypeSO weaponTypeSO;
+        public int weaponWear;
     }
 
     public enum WeaponType
@@ -46,21 +46,15 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public bool HasWeaponData(WeaponType weaponType)
-    {
-        return weaponDataDictionary.ContainsKey(weaponType);
-    }
-
     public void SetWeaponData(WeaponType weaponType, WeaponData weaponData)
     {
         weaponDataDictionary[weaponType] = weaponData;
         OnWeaponDataDictionaryChange?.Invoke(this, EventArgs.Empty);
     }
 
-    public WeaponData GetWeaponData(WeaponType weaponType)
-    {
-        return weaponDataDictionary[weaponType];
-    }
+    public WeaponData GetWeaponData(WeaponType weaponType) => weaponDataDictionary[weaponType];
+
+    public bool HasWeaponData(WeaponType weaponType) => weaponDataDictionary.ContainsKey(weaponType);
 
     public Transform GetAvailableBullet() => objectPool.Get();
 }

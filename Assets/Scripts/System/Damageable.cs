@@ -40,6 +40,19 @@ public class Damageable : MonoBehaviour, IDamageable
         }
     }
 
+    public void AddHealth(int amount)
+    {
+        if (isDead) return;
+
+        int oldHealth = currentHealth;
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+
+        if (currentHealth != oldHealth)
+        {
+            OnHealthChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
     public void Die()
     {
         isDead = true;

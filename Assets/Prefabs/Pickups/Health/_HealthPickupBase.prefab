@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4835930948325951555
+--- !u!1001 &2789057217099851487
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 195017192503537840, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
       propertyPath: m_Name
-      value: _AmmoPickupBase
+      value: _HealthPickupBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022551263723612866, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022551263723612866, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022551263723612866, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 96abe9144609545419e18f668c98e5b3, type: 3}
+    - target: {fileID: 3022551263723612866, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839140875320730882, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839140875320730882, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839140875320730882, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 7105465318879368168, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,35 +86,35 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 195017192503537840, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 2367819625818047592}
+      addedObject: {fileID: -2229021612455693595}
   m_SourcePrefab: {fileID: 100100000, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
---- !u!1 &4731166138070546675 stripped
+--- !u!212 &1100842720800181277 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3022551263723612866, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+  m_PrefabInstance: {fileID: 2789057217099851487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2594196365298734703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 195017192503537840, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
-  m_PrefabInstance: {fileID: 4835930948325951555}
+  m_PrefabInstance: {fileID: 2789057217099851487}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2367819625818047592
+--- !u!114 &-2229021612455693595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4731166138070546675}
+  m_GameObject: {fileID: 2594196365298734703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76d45ff8b67bcb42b88e3ca768505b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7aea7526b1cb6624a9f6d810c0a65fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 5
   collectionMask:
     serializedVersion: 2
     m_Bits: 8
-  weaponTypeSO: {fileID: 0}
-  ammoToGiveMax: 5
-  ammoToGiveMin: 10
-  ammoVisual: {fileID: 7705359686575202945}
---- !u!212 &7705359686575202945 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3022551263723612866, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
-  m_PrefabInstance: {fileID: 4835930948325951555}
-  m_PrefabAsset: {fileID: 0}
+  healthToGive: 15
+  healthImage: {fileID: 21300000, guid: 96abe9144609545419e18f668c98e5b3, type: 3}
+  healthColor: {r: 0, g: 0, b: 0, a: 1}
+  healthVisual: {fileID: 1100842720800181277}

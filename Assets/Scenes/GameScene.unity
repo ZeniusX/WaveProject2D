@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe53ae3524752994a87acd580bc84c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   rotateSpeed: 5
   currentPlayerWeapon: {fileID: 561325451}
   targetMask:
@@ -9585,10 +9585,30 @@ MonoBehaviour:
   spawnRadiusMax: 15
   spawnTimerMin: 2
   spawnTimeMax: 5
-  spawnPrefabs:
-  - {fileID: 4605049192950025794, guid: 0870c86229bdfcd4d9d5503ca158a192, type: 3}
-  - {fileID: 4605049192950025794, guid: 94f75b1eca709f44596e9867851de0c0, type: 3}
-  - {fileID: 4605049192950025794, guid: 06240eaf34542cb449a1de2279e831b7, type: 3}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
+  enemySpawnPrefabs:
+  - prefab: {fileID: 4605049192950025794, guid: 0870c86229bdfcd4d9d5503ca158a192, type: 3}
+    weight: 15
+  - prefab: {fileID: 4605049192950025794, guid: 94f75b1eca709f44596e9867851de0c0, type: 3}
+    weight: 10
+  - prefab: {fileID: 4605049192950025794, guid: 06240eaf34542cb449a1de2279e831b7, type: 3}
+    weight: 5
+  ammoLootPrefabs:
+  - prefab: {fileID: 9063198653032489164, guid: 672830b4473e43d4c8b87da8ff030580, type: 3}
+    weight: 15
+  - prefab: {fileID: 9063198653032489164, guid: 24a632ce771cf884a86fdb58f1b037ea, type: 3}
+    weight: 10
+  - prefab: {fileID: 9063198653032489164, guid: 0cf88a5cc03d7da4bbacfc7f16676474, type: 3}
+    weight: 5
+  healthLootPrefabs:
+  - prefab: {fileID: 4913171886324610359, guid: 323449e67cfcf984ebfbb69864dc2eac, type: 3}
+    weight: 15
+  - prefab: {fileID: 4913171886324610359, guid: b2d593bc2fe6a5044a95fc7fbddf48b0, type: 3}
+    weight: 10
+  - prefab: {fileID: 4913171886324610359, guid: ef6fb271695cc274785b91f8decd2a5b, type: 3}
+    weight: 5
 --- !u!4 &1332790377
 Transform:
   m_ObjectHideFlags: 0
@@ -9633,7 +9653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead38b277aedf27419851d1eb62622c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugMode: 1
+  DebugMode: 0
 --- !u!4 &1344726689
 Transform:
   m_ObjectHideFlags: 0
@@ -14044,9 +14064,12 @@ MonoBehaviour:
   spawnTimerMin: 2
   spawnTimeMax: 5
   spawnTransformList:
-  - {fileID: 6921945609071416346, guid: dca4c49776f88e743973ef30b2f2ef69, type: 3}
-  - {fileID: 6921945609071416346, guid: 7a1effb165996724496c71188126ad55, type: 3}
-  - {fileID: 6921945609071416346, guid: 45c1280d37e161a4aa24ffdcd4ec4c50, type: 3}
+  - {fileID: 9063198653032489164, guid: 0cf88a5cc03d7da4bbacfc7f16676474, type: 3}
+  - {fileID: 9063198653032489164, guid: 24a632ce771cf884a86fdb58f1b037ea, type: 3}
+  - {fileID: 9063198653032489164, guid: 672830b4473e43d4c8b87da8ff030580, type: 3}
+  - {fileID: 4913171886324610359, guid: ef6fb271695cc274785b91f8decd2a5b, type: 3}
+  - {fileID: 4913171886324610359, guid: b2d593bc2fe6a5044a95fc7fbddf48b0, type: 3}
+  - {fileID: 4913171886324610359, guid: 323449e67cfcf984ebfbb69864dc2eac, type: 3}
 --- !u!1 &2071663896
 GameObject:
   m_ObjectHideFlags: 0

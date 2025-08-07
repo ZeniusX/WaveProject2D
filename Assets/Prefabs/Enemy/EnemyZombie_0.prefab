@@ -216,6 +216,9 @@ MonoBehaviour:
   damageProfile:
     damage: 10
     knockBackPower: 10
+  lootSpawnMin: 2
+  lootSpawnMax: 3
+  lootSpawnChance: 0.25
   hitPoint: {fileID: 7462545222728514230}
 --- !u!114 &257723454426013299
 MonoBehaviour:
@@ -337,7 +340,7 @@ MonoBehaviour:
   radius: 0.6
   height: 0.01
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 1.25
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2

@@ -25,5 +25,12 @@ public class AmmoPickup : BasePickup
         weaponData.totalAmmoCount += Random.Range(ammoToGiveMin, ammoToGiveMax + 1);
 
         WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
+
+        DestroyPickUp();
+    }
+
+    protected override void DestroyPickUp()
+    {
+        Destroy(gameObject);
     }
 }

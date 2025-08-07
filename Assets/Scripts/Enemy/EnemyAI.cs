@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Pathfinding;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -12,7 +11,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private float attackCircle;
     [SerializeField] private LayerMask targetMask;
+
+    [Space]
     [SerializeField] private DamageProfile damageProfile;
+
+    [Header("Loot Settings")]
+    [SerializeField] private int lootSpawnMin;
+    [SerializeField] private int lootSpawnMax;
+    [Range(0.0f, 1.0f)][SerializeField] private float lootSpawnChance;
 
     [Header("References")]
     [SerializeField] private Transform hitPoint;
@@ -36,6 +42,7 @@ public class EnemyAI : MonoBehaviour
         {
             enemyDestinationSetter.target = target;
         }
+
 
         enemyDamageable.OnDeath += EnemyDamageable_OnDeath;
 
@@ -64,12 +71,13 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator AttackTarget()
     {
         isAttacking = true;
-
+        enemyPath.isStopped = true;
         OnEnemyAttack?.Invoke(this, EventArgs.Empty);
 
         yield return new WaitForSeconds(attackCooldown);
 
         isAttacking = false;
+        enemyPath.isStopped = false;
     }
 
     public void AttackTargetBox()
@@ -95,6 +103,10 @@ public class EnemyAI : MonoBehaviour
     private void EnemyDamageable_OnDeath(object sender, EventArgs e)
     {
         GameManager.Instance.AddEnemyKilled();
+
+        int randomTimeToSpawn = UnityEngine.Random.Range(lootSpawnMin, lootSpawnMax + 1);
+        SpawnManager.Instance.SpawnLoot(randomTimeToSpawn, lootSpawnChance, transform.position);
+
         Destroy(gameObject);
     }
 }

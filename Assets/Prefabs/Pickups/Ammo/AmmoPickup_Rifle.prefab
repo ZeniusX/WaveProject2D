@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9168543773107709314
+--- !u!1001 &6647860310573857639
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,60 +8,56 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248005568456470936, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7880900421076757084, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: m_Name
-      value: AmmoPickup_Rifle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8344775327235807586, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
-      propertyPath: weaponType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8344775327235807586, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
+    - target: {fileID: 2367819625818047592, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
       propertyPath: weaponTypeSO
       value: 
       objectReference: {fileID: 11400000, guid: ccd2db52fc3f34a4cbf35f2011726529, type: 2}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415902598354754475, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731166138070546675, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_Name
+      value: AmmoPickup_Rifle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0f780159a0191cb4a9082a48aac7e739, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
