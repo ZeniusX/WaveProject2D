@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[DefaultExecutionOrder(100)]
 public class PlayerVisual : MonoBehaviour
 {
     [SerializeField] private Color hitColor;
@@ -14,13 +15,12 @@ public class PlayerVisual : MonoBehaviour
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        playerDamageable = Player.Instance.GetPlayerDamageable();
     }
 
     private void Start()
     {
         originalColor = sprite.color;
-
-        playerDamageable = Player.Instance.GetComponent<Damageable>();
         playerDamageable.OnHealthChanged += PlayerDamageable_OnHealthChanged;
     }
 

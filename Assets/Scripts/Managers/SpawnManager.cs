@@ -41,7 +41,7 @@ public class SpawnManager : MonoBehaviour
     {
         playerTransform = Player.Instance.transform;
 
-        currentSpawnTimer = UnityEngine.Random.Range(spawnTimerMin, spawnTimeMax);
+        SetCurrentSpawnTimer();
     }
 
     private void Update()
@@ -55,9 +55,23 @@ public class SpawnManager : MonoBehaviour
                 Transform prefab = SpawnPrefab(enemySpawnPrefabs, FindValidSpawnPosition());
                 prefab.GetComponent<EnemyAI>().SetTarget(playerTransform);
 
-                currentSpawnTimer = UnityEngine.Random.Range(spawnTimerMin, spawnTimeMax);
+                SetCurrentSpawnTimer();
             }
         }
+    }
+
+    public void SetCurrentSpawnTimer()
+    {
+        int kills = GameManager.Instance.GetEnemiesKilled();
+        float minDivisor = 1f;
+        float divisorStep = 1f;
+        int killsPerStep = 25;
+        float maxDivisor = 5f;
+
+        float rawDivisor = minDivisor + Mathf.Floor(kills / (float)killsPerStep) * divisorStep;
+        float divisor = Mathf.Min(rawDivisor, maxDivisor);
+
+        currentSpawnTimer = UnityEngine.Random.Range(spawnTimerMin, spawnTimeMax) / divisor;
     }
 
     public void SpawnLoot(int spawnTime, float lootChance, Vector2 position)
@@ -66,7 +80,7 @@ public class SpawnManager : MonoBehaviour
         {
             if (UnityEngine.Random.value <= lootChance)
             {
-                List<WeightedPrefab> chosenList = UnityEngine.Random.value <= 0.75f ? ammoLootPrefabs : healthLootPrefabs;
+                List<WeightedPrefab> chosenList = UnityEngine.Random.value <= 0.85f ? ammoLootPrefabs : healthLootPrefabs;
                 SpawnPrefab(chosenList, position);
             }
         }

@@ -20,8 +20,6 @@ MonoBehaviour:
   weaponSettings:
     fireRate: 0.15
     reloadTime: 0.7
-    fullRepairAmount: 100
-    shootingWear: 0.5
     fullMagazineAmmoCount: 30
     bulletsPerShot: 1
     audioVolume: 0.5
@@ -35,5 +33,5 @@ MonoBehaviour:
     bulletLifeTimeMax: 0.3
     spreadAngle: 7
     damageProfile:
-      damage: 5
+      damage: 10
       knockBackPower: 5

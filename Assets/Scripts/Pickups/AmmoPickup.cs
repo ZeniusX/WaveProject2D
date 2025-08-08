@@ -22,7 +22,7 @@ public class AmmoPickup : BasePickup
     {
         WeaponManager.WeaponData weaponData = WeaponManager.Instance.GetWeaponData(weaponTypeSO.weaponType);
 
-        weaponData.totalAmmoCount += Random.Range(ammoToGiveMin, ammoToGiveMax + 1);
+        weaponData.totalAmmoCount = Mathf.Min(weaponData.totalAmmoCount + Random.Range(ammoToGiveMin, ammoToGiveMax + 1), 999);
 
         WeaponManager.Instance.SetWeaponData(weaponTypeSO.weaponType, weaponData);
 

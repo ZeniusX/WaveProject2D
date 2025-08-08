@@ -110,11 +110,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aea7526b1cb6624a9f6d810c0a65fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upTimeMax: 10
   throwForce: 5
   collectionMask:
     serializedVersion: 2
     m_Bits: 8
+  animator: {fileID: 3293254408326753237}
   healthToGive: 15
   healthImage: {fileID: 21300000, guid: 96abe9144609545419e18f668c98e5b3, type: 3}
   healthColor: {r: 0, g: 0, b: 0, a: 1}
   healthVisual: {fileID: 1100842720800181277}
+--- !u!95 &3293254408326753237 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 794680466710449418, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+  m_PrefabInstance: {fileID: 2789057217099851487}
+  m_PrefabAsset: {fileID: 0}

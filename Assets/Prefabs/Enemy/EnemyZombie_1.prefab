@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c013306a08b050b45b75edab084fad35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 3
+  attackCooldown: 1.5
   attackCircle: 0.25
   targetMask:
     serializedVersion: 2
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8670241e9f67a4a898d9a3f76e8979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 35
+  maxHealth: 75
 --- !u!50 &3446700662033431681
 Rigidbody2D:
   serializedVersion: 5

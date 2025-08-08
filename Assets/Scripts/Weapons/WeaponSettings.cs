@@ -7,8 +7,6 @@ public struct WeaponSettings
 {
     public float fireRate;
     public float reloadTime;
-    public float fullRepairAmount;
-    public float shootingWear;
 
     [Space]
     public int fullMagazineAmmoCount;

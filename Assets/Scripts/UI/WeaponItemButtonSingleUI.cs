@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(100)]
 public class WeaponItemButtonSingleUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI weaponName;

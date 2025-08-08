@@ -77,14 +77,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76d45ff8b67bcb42b88e3ca768505b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upTimeMax: 10
   throwForce: 5
   collectionMask:
     serializedVersion: 2
     m_Bits: 8
+  animator: {fileID: 5196001955830203721}
   weaponTypeSO: {fileID: 0}
   ammoToGiveMax: 5
   ammoToGiveMin: 10
   ammoVisual: {fileID: 7705359686575202945}
+--- !u!95 &5196001955830203721 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 794680466710449418, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
+  m_PrefabInstance: {fileID: 4835930948325951555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &7705359686575202945 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3022551263723612866, guid: 936257adc2439f742ba47934dac77c9c, type: 3}
