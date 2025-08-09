@@ -11782,6 +11782,8 @@ MonoBehaviour:
   fpsDisplayToggle: {fileID: 1557358553}
   autoReloadToggle: {fileID: 1346393841}
   closeButton: {fileID: 1505787253}
+  resolutionUI: {fileID: 1317959884}
+  fullscreenUI: {fileID: 561338457}
 --- !u!1 &693851828
 GameObject:
   m_ObjectHideFlags: 0
@@ -23910,10 +23912,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839cdb3326f804046998cf52f1cd44c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRadiusMin: 12
-  spawnRadiusMax: 15
+  spawnRadiusMin: 20
+  spawnRadiusMax: 25
   spawnTimerMin: 2
   spawnTimeMax: 5
+  spawnLimit: 500
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64

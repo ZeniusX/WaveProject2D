@@ -46,8 +46,12 @@ public class OptionsManager : MonoBehaviour
             }
         }
 
-        SetResolutionOption(PlayerPrefs.GetInt(PLAYER_PREFS_RESOLUTION_OPTION, currentResolution));
-        SetFullscreenOption(PlayerPrefs.GetInt(PLAYER_PREFS_FULLSCREEN_OPTION, 0) == 1);
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
+        {
+            SetResolutionOption(PlayerPrefs.GetInt(PLAYER_PREFS_RESOLUTION_OPTION, currentResolution));
+            SetFullscreenOption(PlayerPrefs.GetInt(PLAYER_PREFS_FULLSCREEN_OPTION, 0) == 1);
+        }
+
         SetVSyncOption(PlayerPrefs.GetInt(PLAYER_PREFS_VSYNC_OPTION, 0) == 1);
         SetFrameRateOption(PlayerPrefs.GetInt(PLAYER_PREFS_FRAMERATE_OPTION, (int)GetCurrentFramerateOption()));
         SetAutoReloadState(PlayerPrefs.GetInt(PLAYER_PREFS_AUTO_RELOAD_OPTION, 0) == 1);

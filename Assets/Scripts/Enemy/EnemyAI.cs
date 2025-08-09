@@ -106,6 +106,7 @@ public class EnemyAI : MonoBehaviour
 
         int randomTimeToSpawn = UnityEngine.Random.Range(lootSpawnMin, lootSpawnMax + 1);
         SpawnManager.Instance.SpawnLoot(randomTimeToSpawn, lootSpawnChance, transform.position);
+        SpawnManager.Instance.RemoveEnemyFromList(transform);
 
         Destroy(gameObject);
     }

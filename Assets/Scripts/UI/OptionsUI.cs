@@ -23,6 +23,10 @@ public class OptionsUI : MonoBehaviour
     [Space]
     [SerializeField] private Button closeButton;
 
+    [Space]
+    [SerializeField] private Transform resolutionUI;
+    [SerializeField] private Transform fullscreenUI;
+
     private Action closeAction;
 
     private void Awake()
@@ -45,12 +49,22 @@ public class OptionsUI : MonoBehaviour
 
     private void SetOptions()
     {
-        SetMusicSliderValue();
-        SetSoundSliderValue();
-        SetResolutionDropdown();
-        SetFullscreenToggle();
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
+        {
+            SetResolutionDropdown();
+            SetFullscreenToggle();
+
+        }
+        else
+        {
+            resolutionUI.gameObject.SetActive(false);
+            fullscreenUI.gameObject.SetActive(false);
+        }
+
         SetFramerateDropdown();
         SetVSyncToggle();
+        SetMusicSliderValue();
+        SetSoundSliderValue();
         SetFPSDisplayToggle();
         SetAutoReloadToggle();
     }

@@ -47,16 +47,22 @@ public class Player : MonoBehaviour
     {
         Vector2 moveDir = GameInput.Instance.GetMovementInputNormalized();
 
-        bool isMoving = false;
-
-        if (moveDir.magnitude > 0.1)
-        {
-            isMoving = true;
-        }
+        bool isMoving = moveDir.magnitude > 0.1f;
 
         if (isMoving)
         {
-            playerRb.MovePosition(playerRb.position + moveSpeed * Time.fixedDeltaTime * moveDir);
+            Vector2 forwardDir = transform.up;
+
+            float dot = Vector2.Dot(moveDir, forwardDir);
+
+            float currentSpeed = moveSpeed;
+
+            if (dot < -0.1f)
+            {
+                currentSpeed *= 0.5f;
+            }
+
+            playerRb.MovePosition(playerRb.position + currentSpeed * Time.fixedDeltaTime * moveDir);
         }
     }
 

@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float spawnRadiusMax;
     [SerializeField] private float spawnTimerMin;
     [SerializeField] private float spawnTimeMax;
+    [Range(100, 1000)][SerializeField] private int spawnLimit;
 
     [Space]
     [SerializeField] private LayerMask obstacleMask;
@@ -29,18 +30,19 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private List<WeightedPrefab> healthLootPrefabs;
 
     private float currentSpawnTimer;
-
     private Transform playerTransform;
+    private List<Transform> spawnedEnemyList;
 
     private void Awake()
     {
         Instance = this;
+        spawnedEnemyList = new List<Transform>();
+
     }
 
     private void Start()
     {
         playerTransform = Player.Instance.transform;
-
         SetCurrentSpawnTimer();
     }
 
@@ -50,9 +52,11 @@ public class SpawnManager : MonoBehaviour
         {
             currentSpawnTimer = Mathf.Max(currentSpawnTimer -= Time.deltaTime, 0f);
 
-            if (currentSpawnTimer <= 0f)
+            if (currentSpawnTimer <= 0f && spawnedEnemyList.Count < spawnLimit)
             {
                 Transform prefab = SpawnPrefab(enemySpawnPrefabs, FindValidSpawnPosition());
+                spawnedEnemyList.Add(prefab.transform);
+
                 prefab.GetComponent<EnemyAI>().SetTarget(playerTransform);
 
                 SetCurrentSpawnTimer();
@@ -130,4 +134,6 @@ public class SpawnManager : MonoBehaviour
 
         return weightedList[0].prefab;
     }
+
+    public void RemoveEnemyFromList(Transform transform) => spawnedEnemyList.Remove(transform);
 }
