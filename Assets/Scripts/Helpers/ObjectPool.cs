@@ -14,7 +14,7 @@ public class ObjectPool<T> where T : Component
 
         for (int i = 0; i < initialSize; i++)
         {
-            T obj = GameObject.Instantiate(prefab);
+            T obj = Object.Instantiate(prefab);
             obj.transform.SetParent(parent);
             obj.gameObject.SetActive(false);
             objPool.Add(obj);
@@ -32,7 +32,7 @@ public class ObjectPool<T> where T : Component
             }
         }
 
-        T newObj = GameObject.Instantiate(prefab);
+        T newObj = Object.Instantiate(prefab);
 
         if (!newObj.gameObject.activeInHierarchy)
         {

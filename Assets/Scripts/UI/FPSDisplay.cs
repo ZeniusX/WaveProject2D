@@ -17,7 +17,7 @@ public class FPSDisplay : MonoBehaviour
     {
         Instance = this;
 
-        DisplayFPS(PlayerPrefs.GetInt(PLAYER_PREFS_DISPLAY_FPS, 0) == 1);
+        DisplayFPS(GetCurrentFPSDisplay());
     }
 
     private void Update()
