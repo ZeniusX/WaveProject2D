@@ -49,7 +49,8 @@ public class Bullet : MonoBehaviour
 
     private void HideObject(Transform impactPrefab)
     {
-        Destroy(Instantiate(impactPrefab, transform.position, Quaternion.identity).gameObject, 1f);
+        Transform ImpactTransform = Instantiate(impactPrefab, transform.position, Quaternion.identity);
+        Destroy(ImpactTransform.gameObject, impactPrefab.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
         gameObject.SetActive(false);
     }
 
