@@ -92,6 +92,20 @@
             },
             "m_InputSlot": {
                 "m_Node": {
+                    "m_Id": "bc82c742ecef4b8097b3431cb6c555c4"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "57d9e2c8c7c24df8aaac061051687e61"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
                     "m_Id": "fe844e8c1f534b7c99b548b40618df14"
                 },
                 "m_SlotId": 0
@@ -286,9 +300,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -660.7999267578125,
-            "y": 110.39994812011719,
-            "width": 105.59991455078125,
+            "x": -550.4000244140625,
+            "y": 110.39996337890625,
+            "width": 105.60000610351563,
             "height": 33.60002136230469
         }
     },
@@ -512,10 +526,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -379.20001220703127,
-            "y": 169.59994506835938,
-            "width": 208.0,
-            "height": 301.5999755859375
+            "x": -348.0000305175781,
+            "y": 49.60000228881836,
+            "width": 208.00006103515626,
+            "height": 301.6000061035156
         }
     },
     "m_Slots": [
@@ -662,23 +676,23 @@
     "m_Guid": {
         "m_GuidSerialized": "b2e87d2e-4a70-4099-b698-06eed4b8649e"
     },
-    "m_Name": "Texture2D",
+    "m_Name": "MainTex",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Texture2D",
-    "m_DefaultReferenceName": "_Texture2D",
+    "m_RefNameGeneratedByDisplayName": "MainTex",
+    "m_DefaultReferenceName": "_MainTex",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
+    "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "overrideHLSLDeclaration": true,
+    "hlslDeclarationOverride": 2,
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"64c4ed77e633fd146a49d4d8c3373d5b\",\"type\":3}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -750,8 +764,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -706.4000244140625,
-            "y": 230.39999389648438,
+            "x": -628.7999877929688,
+            "y": 230.39993286132813,
             "width": 208.0,
             "height": 430.3999938964844
         }
@@ -951,7 +965,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "b9075f270f594dda98974859a91a81dc",
     "m_Id": 0,
-    "m_DisplayName": "Texture2D",
+    "m_DisplayName": "MainTex",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1005,10 +1019,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -951.1998901367188,
-            "y": 196.80001831054688,
-            "width": 140.00006103515626,
-            "height": 33.59996032714844
+            "x": -772.7999267578125,
+            "y": 254.39996337890626,
+            "width": 119.20001220703125,
+            "height": 33.5999755859375
         }
     },
     "m_Slots": [

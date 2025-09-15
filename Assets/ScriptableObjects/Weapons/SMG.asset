@@ -22,7 +22,7 @@ MonoBehaviour:
     reloadTime: 0.7
     fullMagazineAmmoCount: 30
     bulletsPerShot: 1
-    audioVolume: 0.5
+    audioVolume: 0.35
     audioClipList:
     - {fileID: 8300000, guid: b2b4b26855926ae4eb4b07da7a3aff29, type: 3}
     isAmmoInfinite: 0
