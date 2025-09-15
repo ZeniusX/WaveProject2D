@@ -68,6 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_DoubleBarrel
       objectReference: {fileID: 0}
+    - target: {fileID: 7705359686575202945, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2274365964460966061, guid: 56c0009bde8eeb5468231c89a970ecb8, type: 3}
+    - target: {fileID: 7705359686575202945, guid: ba954f4e88f057d43a00f3ec580bcca9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 95801093372cb29498152b756b925ad7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
