@@ -37,14 +37,24 @@ public class PauseUI : MonoBehaviour
         {
             SceneLoader.LoadScene(SceneLoader.Scene.MainMenuScene);
         });
-        exitButton.onClick.AddListener(() =>
+
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
         {
+            exitButton.onClick.AddListener(() =>
+            {
 #if UNITY_EDITOR
-            EditorApplication.ExitPlaymode();
+                EditorApplication.ExitPlaymode();
 #else
-            Application.Quit();
+                Application.Quit();
 #endif
-        });
+            });
+        }
+        else
+        {
+            exitButton.gameObject.SetActive(false);
+            RectTransform rt = mainMenuButton.GetComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(250f, rt.sizeDelta.y);
+        }
     }
 
     private void Start()

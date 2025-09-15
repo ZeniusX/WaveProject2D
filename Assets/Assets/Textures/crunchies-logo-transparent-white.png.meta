@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: dfa83f30d42cf3248a09df8ecc118784
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5232598398907485171
+    second: crunchies-logo-transparent-white_0
+  - first:
+      213: 3666608421958611640
+    second: crunchies-logo-transparent-white_1
+  - first:
+      213: 6252939951817886912
+    second: crunchies-logo-transparent-white_2
+  - first:
+      213: -8943601491780203733
+    second: crunchies-logo-transparent-white_3
+  - first:
+      213: 430125465308992092
+    second: crunchies-logo-transparent-white_4
+  - first:
+      213: -1442072888252222179
+    second: crunchies-logo-transparent-white_5
+  - first:
+      213: 6393105738976938616
+    second: crunchies-logo-transparent-white_6
+  - first:
+      213: -7539882099810667238
+    second: crunchies-logo-transparent-white_7
+  - first:
+      213: -8699645163800567988
+    second: crunchies-logo-transparent-white_8
+  - first:
+      213: 2636030557755127207
+    second: crunchies-logo-transparent-white_9
+  - first:
+      213: -6172289791717928211
+    second: crunchies-logo-transparent-white_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 8
+        width: 194
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fb8823358ced9840800000000000000
+      internalID: 5232598398907485171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_1
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 5
+        width: 208
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b27c49eee862e230800000000000000
+      internalID: 3666608421958611640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_2
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 8
+        width: 194
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc04f5b1c7e6c650800000000000000
+      internalID: 6252939951817886912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_3
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 7
+        width: 201
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2b89c514d1f1e380800000000000000
+      internalID: -8943601491780203733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_4
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 8
+        width: 194
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c529790f4dc18f500800000000000000
+      internalID: 430125465308992092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_5
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 7
+        width: 45
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d15318b395abcfbe0800000000000000
+      internalID: -1442072888252222179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_6
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 126
+        width: 62
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87a4b372ccfd8b850800000000000000
+      internalID: 6393105738976938616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_7
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 7
+        width: 45
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a157570ad25fc5790800000000000000
+      internalID: -7539882099810667238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_8
+      rect:
+        serializedVersion: 2
+        x: 1482
+        y: 7
+        width: 45
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4fd8b3f0d6a44780800000000000000
+      internalID: -8699645163800567988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_9
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 8
+        width: 168
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a5b11473df059420800000000000000
+      internalID: 2636030557755127207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crunchies-logo-transparent-white_10
+      rect:
+        serializedVersion: 2
+        x: 1784
+        y: 8
+        width: 194
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de212e9f22f975aa0800000000000000
+      internalID: -6172289791717928211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      crunchies-logo-transparent-white_0: 5232598398907485171
+      crunchies-logo-transparent-white_1: 3666608421958611640
+      crunchies-logo-transparent-white_10: -6172289791717928211
+      crunchies-logo-transparent-white_2: 6252939951817886912
+      crunchies-logo-transparent-white_3: -8943601491780203733
+      crunchies-logo-transparent-white_4: 430125465308992092
+      crunchies-logo-transparent-white_5: -1442072888252222179
+      crunchies-logo-transparent-white_6: 6393105738976938616
+      crunchies-logo-transparent-white_7: -7539882099810667238
+      crunchies-logo-transparent-white_8: -8699645163800567988
+      crunchies-logo-transparent-white_9: 2636030557755127207
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

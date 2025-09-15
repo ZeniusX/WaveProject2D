@@ -16,13 +16,22 @@ public class MainMenuUI : MonoBehaviour
         {
             SceneLoader.LoadScene(SceneLoader.Scene.GameScene);
         });
-        quitButton.onClick.AddListener(() =>
+
+
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
         {
+            quitButton.onClick.AddListener(() =>
+            {
 #if UNITY_EDITOR
-            EditorApplication.ExitPlaymode();
+                EditorApplication.ExitPlaymode();
 #else
-            Application.Quit();
+                Application.Quit();
 #endif
-        });
+            });
+        }
+        else
+        {
+            quitButton.gameObject.SetActive(false);
+        }
     }
 }

@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"D:/Unity Projects/Personal Projects/WaveProject2D/Builds/WaveProject2D_WebGL_v1.0;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"D:/Unity Projects/Personal/WaveProject2D/Builds/WaveProject2D_WebGL_v1.0;D:/Unity Projects/Personal Projects/WaveProject2D/Builds/WaveProject2D_WebGL_v1.0;;;;;;;;\"}"
             }
         ]
     }
